@@ -17,7 +17,7 @@ const apiUrl = 'https://api.graphcms.com/simple/v1/pangaea'
 
 module.exports = {
   matchers: { html: '*(**/)*.sgr', css: '*(**/)*.sss' },
-  ignore: ['**/index.html', '**/layout.sgr', '**/_*', '**/.*', 'readme.md', 'yarn.lock', 'views/templates/*.sgr'],
+  ignore: ['**/index.html', '**/layout.sgr', '**/.*', 'readme.md', 'yarn.lock', 'views/templates/*.sgr'],
   reshape: htmlStandards({
     root: path.join(__dirname, 'views'),
     locals: (ctx) => locals
