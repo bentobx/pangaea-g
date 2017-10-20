@@ -1,6 +1,9 @@
 # GraphCMS, Spike, & Netlify Example
 
+example app using graphcms and netlify
+=======
 This is an example static site made with [graphcms](https://graphcms.com/) and [spike](https://spike.cf), and hosted on [netlify](https://netlify.com). You can see the full sample app live [here](https://spike-graphcms.netlify.com/)!
+
 
 ## Setup
 
