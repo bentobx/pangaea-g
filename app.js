@@ -1,20 +1,23 @@
+require('dotenv').config()
+
 const htmlStandards = require('reshape-standard')
 const cssStandards = require('spike-css-standards')
 const jsStandards = require('spike-js-standards')
 const Records = require('spike-records')
 const path = require('path')
 const MarkdownIt = require('markdown-it')
+const env = process.env.api_key
 
 const md = new MarkdownIt()
 const locals = {
   md: md.render.bind(md),
   mediaUrl: 'https://media.graphcms.com'
 }
-const apiUrl = 'https://api.graphcms.com/simple/v1/vinylbase'
+const apiUrl = 'https://api.graphcms.com/simple/v1/pangaea'
 
 module.exports = {
   matchers: { html: '*(**/)*.sgr', css: '*(**/)*.sss' },
-  ignore: ['**/layout.sgr', '**/_*', '**/.*', 'readme.md', 'yarn.lock', 'views/templates/*.sgr'],
+  ignore: ['**/index.html', '**/layout.sgr', '**/_*', '**/.*', 'readme.md', 'yarn.lock', 'views/templates/*.sgr'],
   reshape: htmlStandards({
     root: path.join(__dirname, 'views'),
     locals: (ctx) => locals
@@ -24,56 +27,25 @@ module.exports = {
   plugins: [
     new Records({
       addDataTo: locals,
-      reviews: {
+      posts: {
         graphql: {
           url: apiUrl,
+          headers: { Authorization: 'Bearer ' + process.env.api_key_local},
           query: `{
-            allReviews {
-              title, slug, rating, review,
-              record {
-                title, cover { handle },
-                artist { name, slug, picture { handle } }
+            allBlogPosts {
+              postTitle, postSlug, postDateAndTime, postContent,
+              authors {
+                authorName
               }
             }
           }`
         },
-        transform: (res) => res.data.allReviews,
+        transform: (res) => res.data.allBlogPosts,
         template: {
-          path: 'views/templates/review.sgr',
-          output: (review) => `review/${review.slug}.html`
+          path: 'views/templates/post.sgr',
+          output: (post) => `posts/${post.postSlug}.html`
         }
-      },
-      artists: {
-        graphql: {
-          url: apiUrl,
-          query: `{
-            allArtists {
-              name, slug, bio, picture { handle },
-              records { title, slug, cover { handle } }
-            }
-          }`
-        },
-        transform: (res) => res.data.allArtists,
-        template: {
-          path: 'views/templates/artist.sgr',
-          output: (artist) => `artist/${artist.slug}.html`
-        }
-      },
-      records: {
-        graphql: {
-          url: apiUrl,
-          query: `{
-            allRecords {
-              title, slug, cover { handle },
-              tracks { title, length }
-            }
-          }`
-        },
-        transform: (res) => res.data.allRecords,
-        template: {
-          path: 'views/templates/record.sgr',
-          output: (record) => `record/${record.slug}.html`
-        }
+
       }
     })
   ]
