@@ -30,7 +30,7 @@ module.exports = {
       posts: {
         graphql: {
           url: apiUrl,
-          headers: { Authorization: 'Bearer ' + process.env.api_key_local},
+          headers: { Authorization: 'Bearer ' + process.env.api_key},
           query: `{
             allBlogPosts {
               postTitle, postSlug, postDateAndTime, postContent,
