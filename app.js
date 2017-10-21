@@ -6,9 +6,11 @@ const jsStandards = require('spike-js-standards')
 const Records = require('spike-records')
 const path = require('path')
 const MarkdownIt = require('markdown-it')
+const markdownitFootnote = require('markdown-it-footnote')
+
 const env = process.env.api_key
 
-const md = new MarkdownIt()
+const md = new MarkdownIt().use(markdownitFootnote)
 const locals = {
   md: md.render.bind(md),
   mediaUrl: 'https://media.graphcms.com'

@@ -6,5 +6,6 @@ extends(src='layout.sgr')
     section
       article
         .content {{{ md(item.postContent) }}}
+        p hey
         // p {{ JSON.stringify(item) }}
         // h2 {{ item.record.author.authorName }}
