@@ -10,8 +10,27 @@ html
       link(href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet')
       link(rel='stylesheet' href='/css/index.css')
 
-  body
+  body#blog
+
+    div.container
+      div.row
+        div.col-md-4
+          a(href='http://pangaea-consultants.com')
+            img(src='/img/pangaea_logo.png' alt='Pangaea Logo')
+
+        div.col-md-8
+          div#nav
+            ul#primary-nav
+              li
+                a(href='http://pangaea-consultants.com/') Home
+              li
+                a(href='http://pangaea-consultants.com/about') About
+              li
+                a(href='http://pangaea-consultants.com/services') Services
+              li
+                a(href='http://pangaea-consultants.com/blog') Blog
+              li
+                a(href='http://pangaea-consultants.com/contact') Contact
 
     block(name='content')
-
-
+      

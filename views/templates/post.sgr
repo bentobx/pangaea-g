@@ -3,9 +3,20 @@ extends(src='layout.sgr')
     header
       h1 {{ item.postTitle }}
 
-    section
-      article
-        .content {{{ md(item.postContent) }}}
-        p hey
-        // p {{ JSON.stringify(item) }}
-        // h2 {{ item.record.author.authorName }}
+
+
+      div.row body
+        div.col-md-8.col-md-offset-2
+        each(loop='tag in item.postTags')
+          span {{ tag }}
+
+        div(class="post_body {{{ item.postTags }}}")
+          h1 Topics &amp; Trends
+          h2 Volume 5
+          p.pubdate {{ item.postDateAndTime }}
+
+          div.row.body
+            div.col-md-8.col-md-offset-2
+
+              #TOC {{{ md(item.postTOC) }}}
+              .content {{{ md(item.postContent) }}}
