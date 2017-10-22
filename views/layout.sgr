@@ -33,4 +33,4 @@ html
                 a(href='http://pangaea-consultants.com/contact') Contact
 
     block(name='content')
-      
+      p Hello.
