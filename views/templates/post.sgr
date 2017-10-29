@@ -4,19 +4,19 @@ extends(src='layout.sgr')
       h1 {{ item.postTitle }}
 
 
-
-      div.row body
-        div.col-md-8.col-md-offset-2
-        each(loop='tag in item.postTags')
-          span {{ tag }}
-
+      article
         div(class="post_body {{{ item.postTags }}}")
-          h1 Topics &amp; Trends
-          h2 Volume 5
+          h1 {{ item.series }}
+          h2 {{ item.version }}
+          // p.author {{ authors.authorName }}
           p.pubdate {{ item.postDateAndTime }}
 
           div.row.body
             div.col-md-8.col-md-offset-2
 
-              #TOC {{{ md(item.postTOC) }}}
-              .content {{{ md(item.postContent) }}}
+            // #TOC {{{ md(item.postTOC) }}}
+            .content {{{ md(item.postContent) }}}
+
+              each(loop='tag in item.postTags')
+                span {{ tag }}
+

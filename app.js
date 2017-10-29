@@ -35,7 +35,7 @@ module.exports = {
           headers: { Authorization: 'Bearer ' + process.env.api_key},
           query: `{
             allBlogPosts {
-              postTitle, postSlug, postDateAndTime, postContent, postTOC, postTags
+              postTitle, postSlug, postDateAndTime, postContent, postTOC, postTags, series, version
               authors {
                 authorName
               }
