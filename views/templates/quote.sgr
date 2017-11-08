@@ -1,4 +1,4 @@
-extends(src='layout.sgr')
+extends(src='views/layout.sgr')
   block(name='content')
     header
       .content {{ item.text }}

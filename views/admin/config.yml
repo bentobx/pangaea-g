@@ -1,0 +1,27 @@
+backend:
+  name: git-gateway
+  branch: master
+  repo: jennie/pangaea-g
+  site_domain: cms.netlify.com
+  base_url: https://api.netlify.com
+publish_mode: editorial_workflow
+media_folder: images/uploads
+collections:
+  - name: reports
+    label: Reports
+    folder: reports
+    # extension: md
+    create: true
+    fields:
+      - {label: Layout, name: layout, widget: select, options: ['topics-and-trends', 'inside-trade']}
+      - {label: Type, name: type, widget: select, options: ['Topics & Trends', 'Inside Trade']}
+      - {label: Title, name: title, widget: string}
+      - {label: Volume/Month, name: volume, widget: string}
+      - {label: Author, name: author, widget: string, default: Marla Weingarten}
+      - {label: Publish Date, name: date, widget: datetime}
+      - {label: Body, name: body, widget: markdown}
+      - name: authors
+        label: Authors
+        widget: list
+        fields:
+          - {label: Name, name: name, widget: string}
