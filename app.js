@@ -13,13 +13,12 @@ const env = process.env.api_key
 const md = new MarkdownIt().use(markdownitFootnote)
 const locals = {
   md: md.render.bind(md),
-  mediaUrl: 'https://media.graphcms.com'
 }
-const apiUrl = 'https://api.graphcms.com/simple/v1/pangaea'
+const apiUrl = 'https://api.graph.cool/simple/v1/cj9frf64r26kn0129ol67c71f'
 
 module.exports = {
   matchers: { html: '*(**/)*.sgr', css: '*(**/)*.sss' },
-  ignore: ['**/index.html', '**/layout.sgr', '**/.*', 'readme.md', 'yarn.lock', 'views/templates/*.sgr'],
+  ignore: ['**/index.html', '**/layout.sgr', '**/.*', 'readme.md', 'yarn.lock', 'views/templates/*.sgr', 'custom_modules'],
   reshape: htmlStandards({
     root: path.join(__dirname, 'views'),
     locals: (ctx) => locals
@@ -29,23 +28,20 @@ module.exports = {
   plugins: [
     new Records({
       addDataTo: locals,
-      posts: {
+      quotes: {
         graphql: {
           url: apiUrl,
           headers: { Authorization: 'Bearer ' + process.env.api_key},
           query: `{
-            allBlogPosts {
-              postTitle, postSlug, postDateAndTime, postContent, postTOC, postTags, series, version
-              authors {
-                authorName
-              }
+            allQuotes {
+              attribution, text
             }
           }`
         },
-        transform: (res) => res.data.allBlogPosts,
+        transform: (res) => res.data.allQuotes,
         template: {
-          path: 'views/templates/post.sgr',
-          output: (post) => `posts/${post.postSlug}.html`
+          path: 'views/templates/quote.sgr',
+          output: (post) => `quote/${post.postSlug}.html`
         }
 
       }

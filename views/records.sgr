@@ -7,9 +7,9 @@ extends(src='layout.sgr')
 
     section
       ul
-        each(loop='record in records')
-          li
-            a(href='/record/{{ record.slug }}')
-              .g-card
-                img(src='{{ mediaUrl }}/resize=w:140,h:140,fit:crop/{{ record.cover.handle }}')
-                .title {{ record.title }}
+        each(loop='quote in quotes')
+          li {{ quote.text }}
+            // a(href='/record/{{ record.slug }}')
+            //   .g-card
+            //     img(src='{{ mediaUrl }}/resize=w:140,h:140,fit:crop/{{ record.cover.handle }}')
+            //     .title {{ record.title }}
