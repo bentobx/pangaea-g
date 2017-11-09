@@ -12,6 +12,8 @@ image: /images/uploads/pangaea_strategic_plan_icon.jpg
 Environmental Reviews {#environmental}
 ---------------------
 
+@[toc]
+
 ### For executives
 
 What are the implications for your business of the increasingly complex healthcare and pharmaceutical environment? Our senior executives collaborate to monitor changes on the landscape, and keep you in the loop.
