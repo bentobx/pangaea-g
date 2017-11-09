@@ -24,7 +24,7 @@ const apiUrl = 'https://api.graph.cool/simple/v1/cj9frf64r26kn0129ol67c71f'
 const collections = new Collections({
   addDataTo: locals,
   collections: {
-    posts: {
+    reports: {
       files: 'reports/**',
       markdownLayout: 'templates/post.sgr',
       permalinks: (p) => {

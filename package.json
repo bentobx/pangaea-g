@@ -1,12 +1,12 @@
 {
-  "name": "graphcms-netlify-example",
-  "description": "example app using graphcms and netlify",
+  "name": "Pangaea 2.0",
+  "description": "",
   "version": "0.0.1",
   "author": "static-dev",
   "ava": {
     "verbose": "true"
   },
-  "bugs": "https://github.com/static-dev/graphcms-netlify-example/issues",
+  "bugs": "",
   "dependencies": {
     "dateformat": "^3.0.2",
     "dotenv": "^4.0.0",
@@ -26,10 +26,10 @@
     "snazzy": "^7.0.0",
     "standard": "^10.0.0"
   },
-  "homepage": "https://github.com/static-dev/graphcms-netlify-example",
+  "homepage": "",
   "main": "app.js",
   "private": true,
-  "repository": "https://github.com/static-dev/graphcms-netlify-example",
+  "repository": "",
   "scripts": {
     "lint": "standard | snazzy",
     "precommit": "npm run lint -s"
