@@ -24,20 +24,29 @@ const apiUrl = 'https://api.graph.cool/simple/v1/cj9frf64r26kn0129ol67c71f'
 const collections = new Collections({
   addDataTo: locals,
   collections: {
-    reports: {
-      files: 'reports/**',
-      markdownLayout: 'templates/post.sgr',
+    pages: {
+      files: 'collections/pages/**',
+      markdownLayout: 'views/__page_template.sgr',
       permalinks: (p) => {
-        const m = p.match(/^.*?\/reports\/(.*?)\./)
-        // console.log(`${m[1]}`)
+        const m = p.match(/^.*?\/collections\/pages\/(.*?)\./)
+        console.log(`${m[1]}`)
         return `${m[1]}.html`
-      },
-      transform: (data) => {
-        const d = new Date(data.date)
-        data.newdate = df(d, "mmmm yyyy")
-        return data
       }
     }
+    // reports: {
+    //   files: 'collections/reports/**',
+    //   markdownLayout: 'templates/post.sgr',
+    //   permalinks: (p) => {
+    //     const m = p.match(/^.*?\/reports\/(.*?)\./)
+    //     // console.log(`${m[1]}`)
+    //     return `${m[1]}.html`
+    //   },
+    //   transform: (data) => {
+    //     const d = new Date(data.date)
+    //     data.newdate = df(d, "mmmm yyyy")
+    //     return data
+    //   }
+    // }
   }
 })
 
@@ -55,7 +64,7 @@ const records = new Records({
     },
     transform: (res) => res.data.allQuotes,
     template: {
-      path: 'views/templates/quote.sgr',
+      path: 'views/quote.sgr',
       output: (post) => `quote/${post.postSlug}.html`
     }
 
@@ -65,7 +74,7 @@ const records = new Records({
 module.exports = {
   devtool: 'source-map',
   matchers: { html: '*(**/)*.sgr', css: '*(**/)*.sss' },
-  ignore: ['**/layout.sgr', '**/_post_template.sgr', '**/_page_template.sgr', '**/.*', 'readme.md', 'yarn.lock', 'custom_modules/**'],
+  ignore: ['**/layout.sgr', '**/__post_template.sgr', '**/__page_template.sgr', '**/.*', 'readme.md', 'yarn.lock', 'custom_modules/**'],
   reshape: htmlStandards({
     parser: sugarml,
     locals: (ctx) => { return collections.locals(ctx, Object.assign({ pageId: pageId(ctx) }, locals)) },
