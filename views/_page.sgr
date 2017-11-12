@@ -10,4 +10,4 @@ extends(src="_layout.sgr")
     if(condition='{{item.toc}} == true')
       div {{ item.toc_content }}
 
-    div {{ item.body }}
+    div {{ md(item.body) }}
