@@ -61,17 +61,16 @@ const datos = new SpikeDatoCMS({
 
 module.exports = {
   devtool: 'source-map',
-  matchers: { html: '*(**/)*.sgr', css: '*(**/)*.sss' },
+  matchers: { html: '*(**/)*.sgr', css: '*(**/)*.css' },
   ignore: [ '**/layout.sgr', '**/.*', 'readme.md', 'yarn.lock', 'custom_modules/**' ],
   reshape: htmlStandards({
     parser: sugarml,
     locals: { md: markdown.render.bind(markdown) } ,
     markdownPlugins: [ markdownitFootnote, markdownItAttrs, markdownItContainer, markdownItSup ],
-    retext: {quotes: false}
+    retext: { quotes: false }
   }),
   postcss: cssStandards({
     appendPlugins: styleGuide({
-      src: 'assets/css/app.css',
       project: 'Pangaea 2.0',
       dest: 'public/styleguide.html'
     })
