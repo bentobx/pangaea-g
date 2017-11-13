@@ -1,0 +1,12 @@
+extends(src="_layout.sgr")
+  block(name="title")
+    title Pangaea Consultants
+
+  block(name="content")
+    h1 This is the home page!
+    p
+    div(style="color: rgb({{ item.colour.red }}, {{ item.colour.green }}, {{ item.colour.blue }})")
+      p {{ md(item.column1) }}
+
+
+    p {{{ JSON.stringify(item) }}}

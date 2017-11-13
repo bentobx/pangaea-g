@@ -1,26 +1,24 @@
 const env                     = require('dotenv').config()
 const path                    = require('path')
-
 const htmlStandards           = require('reshape-standard')
+
+const styleGuide              = require('postcss-style-guide')
 const cssStandards            = require('spike-css-standards')
+
 const jsStandards             = require('spike-js-standards')
 const pageId                  = require('spike-page-id')
 const sugarml                 = require('sugarml')
 const sugarss                 = require('sugarss')
 const df                      = require('dateformat')
-
-const SpikeDatoCMS = require('spike-datocms')
-
+const SpikeDatoCMS            = require('spike-datocms')
 const MarkdownIt              = require('markdown-it')
 const markdownitFootnote      = require('markdown-it-footnote')
 const markdownItTocAndAnchor  = require('markdown-it-toc-and-anchor').default
 const markdownItAttrs         = require('markdown-it-attrs')
 const markdownItContainer     = require('markdown-it-container')
 const markdownItSup           = require('markdown-it-sup')
-
-const markdown = new MarkdownIt().use(markdownItTocAndAnchor, { anchorLink: false, tocFirstLevel: 3 })
-
-const locals = { }
+const markdown                = new MarkdownIt().use(markdownItTocAndAnchor, { anchorLink: false, tocFirstLevel: 3 })
+const locals                  = { }
 
 const datos = new SpikeDatoCMS({
   addDataTo: locals,
@@ -31,7 +29,15 @@ const datos = new SpikeDatoCMS({
       path: 'views/_page.sgr',
       output: (quote) => { return `quotes/${quote.slug}.html` }
     }
-  }, {
+  },
+  {
+    name: 'home_page',
+    template: {
+      path: 'views/_home_page.sgr',
+      output: (page) => { return `/index.html` }
+    }
+  },
+  {
     name: 'page',
     template: {
       path: 'views/_page.sgr',
@@ -53,7 +59,6 @@ const datos = new SpikeDatoCMS({
   }]
 })
 
-
 module.exports = {
   devtool: 'source-map',
   matchers: { html: '*(**/)*.sgr', css: '*(**/)*.sss' },
@@ -65,7 +70,11 @@ module.exports = {
     retext: {quotes: false}
   }),
   postcss: cssStandards({
-    parser: sugarss
+    appendPlugins: styleGuide({
+      src: 'assets/css/app.css',
+      project: 'Pangaea 2.0',
+      dest: 'public/styleguide.html'
+    })
   }),
   babel: jsStandards(),
   plugins: [datos]
