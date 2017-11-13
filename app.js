@@ -71,10 +71,11 @@ module.exports = {
   }),
   postcss: cssStandards({
     appendPlugins: styleGuide({
-      src: 'assets/css/app.css',
+      src: '/assets/css/index.css',
       project: 'Pangaea 2.0',
       dest: 'public/styleguide.html'
-    })
+    }),
+    parser: false
   }),
   babel: jsStandards(),
   plugins: [datos]
