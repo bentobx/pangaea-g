@@ -1,3 +1,4 @@
+@import 'colors.css';
 /*
 @styleguide
 
@@ -13,8 +14,8 @@ These are three categories for buttons based on function:
        Buttons that are used in the page which do not immediately call for action.
        They are not the primary action for the page.
     4. hotel -
-       Buttons used for a specific purpose. In this example, a button that is used with 
-       hotel reservations and booking. 
+       Buttons used for a specific purpose. In this example, a button that is used with
+       hotel reservations and booking.
 
 Buttons can be small or large depending on the usecase. Here are two variation based on form:
     1. large - padding of 24px/36px
@@ -73,11 +74,11 @@ All buttons have a minimum width set.
 
 @title Links
 
-We sometimes use links as it is with its default styling and also use it 
-with the look of a button. 
+We sometimes use links as it is with its default styling and also use it
+with the look of a button.
 
 <a> Link </a>
-    
+
     <a> Link </a>
 
 <a class="button primary"> Link Like Primary Button </a>
@@ -94,8 +95,8 @@ with the look of a button.
 */
 
 /* Tip: Instead of doing <a><button></button></a> or <button><a></a></button> or worse
-<a></a> that serves as a button or <button> that routes like an <a>, please style 
-them to however you want them to look and use them semantically. 
+<a></a> that serves as a button or <button> that routes like an <a>, please style
+them to however you want them to look and use them semantically.
 */
 
 :root {
@@ -148,7 +149,7 @@ button.hotel:hover, a.button.hotel:hover {
 button.passive, a.button.passive {
   background-color: transparent;
   border: 1px solid var(--color-accent-main);
-  color: var(--color-primary-text);
+  color: var(--color-text-primary);
 }
 
 button.passive:hover, a.button.passive:hover {

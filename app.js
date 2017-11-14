@@ -70,6 +70,7 @@ module.exports = {
     retext: { quotes: false }
   }),
   postcss: cssStandards({
+    locals: { datos },
     appendPlugins: styleGuide({
       project: 'Pangaea 2.0',
       dest: 'public/styleguide.html'

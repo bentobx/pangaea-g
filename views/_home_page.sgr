@@ -3,10 +3,15 @@ extends(src="_layout.sgr")
     title Pangaea Consultants
 
   block(name="content")
-    h1 This is the home page!
-    p
-    div(style="color: rgb({{ item.colour.red }}, {{ item.colour.green }}, {{ item.colour.blue }})")
-      p {{ md(item.column1) }}
+    div.horizontal.center.space-around.top
+      div.banner {{ md(item.bannerText) }}
 
+    div.horizontal.center.space-around.top
+      div.first
+        p {{ md(item.column1) }}
+      div.second
+        p {{ md(item.column2) }}
+      div.third
+        p {{ md(item.column3) }}
 
     p {{{ JSON.stringify(item) }}}
