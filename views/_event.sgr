@@ -1,0 +1,49 @@
+extends(src="../templates/_layout.sgr")
+  block(name="title")
+    title {{ item.title }} - Pangaea Consultants
+
+  block(name="content")
+    h1 {{ item.title }}
+
+    if(condition='{{item.tickets}} !== null')
+      each(loop="ticket in item.tickets")
+        p {{  '$' + fn(ticket.total) }} (includes {{ '$' + fn(ticket.price * ticket.taxRate) }} HST)
+
+
+
+        else
+          li {{ '$' + fn(ticket.price) }}
+        // if(condition='{{ ticket.tax }} === true')
+        //   p {{ '$' + fn(ticket.price) }} {{ ticket.title }}
+        //   p + {{ '$' + fn(ticket.price * ticket.taxRate) }} HST
+        //   p = {{ '$' + fn(ticket.price + (ticket.price * ticket.taxRate)) }}
+        //
+        // else
+        //   li {{ '$' + fn(ticket.price) }}
+
+
+
+
+    h4 Dates
+
+    ul.dates
+      each(loop="date in item.dates")
+        li {{ df(date.startDatetime, "dddd, mmmm d, yyyy, h:MM TT")}} – {{ df(date.endDatetime, "dddd, mmmm d, yyyy, h:MM TT")}}
+
+    if(condition='{{item.description}} !== null')
+      div {{ md(item.description) }}
+
+
+
+
+    form(action="/your-server-side-code" method="POST")
+      script(
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="pk_test_zi4yQH5XpDZAKCgXiRZSFmmn"
+        data-amount="2000"
+        data-name="Pangaea Holdings, Inc."
+        data-description="{{ item.title }}"
+        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+        data-locale="auto"
+        data-currency="cad").
+          // console.log('hello')

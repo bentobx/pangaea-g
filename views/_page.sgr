@@ -1,14 +1,12 @@
-extends(src="_layout.sgr")
+extends(src="../templates/_layout.sgr")
   block(name="title")
     title {{ item.title }} - Pangaea Consultants
 
   block(name="content")
     h1 {{ item.title }}
 
-
-
     if(condition='{{item.toc}} == true')
       div {{ item.toc_content }}
 
-    div {{ md(item.body) }}
-
+    if(condition='{{item.body}} !== null')
+      div {{ md(item.body) }}

@@ -10,6 +10,7 @@ const pageId                  = require('spike-page-id')
 const sugarml                 = require('sugarml')
 const sugarss                 = require('sugarss')
 const df                      = require('dateformat')
+const fn                      = require('format-num')
 const SpikeDatoCMS            = require('spike-datocms')
 const MarkdownIt              = require('markdown-it')
 const markdownitFootnote      = require('markdown-it-footnote')
@@ -23,11 +24,50 @@ const locals                  = { }
 const datos = new SpikeDatoCMS({
   addDataTo: locals,
   token: process.env.dato_api_key,
-  models: [{
+  models: [
+  {
     name: 'quote',
     template: {
       path: 'views/_page.sgr',
       output: (quote) => { return `quotes/${quote.slug}.html` }
+    }
+  },
+  {
+    name: 'article',
+    template: {
+      path: 'views/_page.sgr',
+      output: (article) => { return `blog/${article.slug}.html` }
+    }
+  },
+  {
+    name: 'event',
+    // transform: (data) => {
+    //   if (data.dates) {
+    //     const dates = data.dates
+    //     dates.forEach(function(d, i) {
+    //       const newDate = new Date(d)
+    //       data[i].startDatetime = df(newDate.startDatetime, "mmmm yyyy")
+    //       data[i].endDatetime = df(newDate.endDatetime, "mmmm yyyy")
+    //       console.log(data.dates)
+    //     })
+    //   }
+    //   return data
+    // },
+    transform: (data) => {
+      if (data.tickets) {
+        const tickets = data.tickets
+        tickets.forEach(function(ticket, index) {
+          tax = ticket.price * ticket.taxRate
+          total = ticket.price + tax
+          ticket.total = total
+          console.log(data)
+        })
+      }
+      return data
+    },
+    template: {
+      path: 'views/_event.sgr',
+      output: (event) => { return `events/${event.slug}.html` }
     }
   },
   {
@@ -41,7 +81,16 @@ const datos = new SpikeDatoCMS({
     name: 'page',
     template: {
       path: 'views/_page.sgr',
-      output: (page) => { return `/${page.slug}.html` }
+      output: (page) => {
+        // TODO: this is a bit precarious – don't use if nesting goes more
+        // than one level deep. Refactor.
+        if (page.parentId) {
+          return `/${page.parentId.slug}/${page.slug}.html`
+        }
+        else {
+          return `/${page.slug}.html`
+        }
+      }
     },
     transform: (data) => {
       if (data.date) {
@@ -49,11 +98,13 @@ const datos = new SpikeDatoCMS({
         data.newdate = df(d, "mmmm yyyy")
       }
       // add toc to the local {{ item }} if toc is true
-      markdown.render(data.body, {
-        tocCallback: function(tocMarkdown, tocArray, tocHtml) {
-          data.toc_content = tocHtml
-        }
-      })
+      if (data.toc == true) {
+        markdown.render(data.body, {
+          tocCallback: function(tocMarkdown, tocArray, tocHtml) {
+            data.toc_content = tocHtml
+          }
+        })
+      }
       return data
     }
   }]
@@ -65,16 +116,17 @@ module.exports = {
   ignore: [ '**/layout.sgr', '**/.*', 'readme.md', 'yarn.lock', 'custom_modules/**' ],
   reshape: htmlStandards({
     parser: sugarml,
-    locals: { md: markdown.render.bind(markdown) } ,
+    locals: { df: df.bind(df), fn: fn.bind(fn), md: markdown.render.bind(markdown) } ,
     markdownPlugins: [ markdownitFootnote, markdownItAttrs, markdownItContainer, markdownItSup ],
     retext: { quotes: false }
   }),
   postcss: cssStandards({
-    locals: { datos },
-    appendPlugins: styleGuide({
-      project: 'Pangaea 2.0',
-      dest: 'public/styleguide.html'
-    })
+    locals: { datos }
+    // ,
+    // appendPlugins: styleGuide({
+    //   project: 'Pangaea 2.0',
+    //   dest: 'public/styleguide/index.html'
+    // })
   }),
   babel: jsStandards(),
   plugins: [datos]

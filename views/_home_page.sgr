@@ -1,4 +1,4 @@
-extends(src="_layout.sgr")
+extends(src="../templates/_layout.sgr")
   block(name="title")
     title Pangaea Consultants
 
@@ -6,12 +6,17 @@ extends(src="_layout.sgr")
     div.horizontal.center.space-around.top
       div.banner {{ md(item.bannerText) }}
 
-    div.horizontal.center.space-around.top
-      div.first
-        p {{ md(item.column1) }}
-      div.second
-        p {{ md(item.column2) }}
-      div.third
-        p {{ md(item.column3) }}
+    div.horizontal
+      div {{ md(item.column1) }}
+      div {{ md(item.column2) }}
+      div {{ md(item.column3) }}
 
-    p {{{ JSON.stringify(item) }}}
+    div#featured-quote
+      blockquote
+        div {{ md(item.featuredQuote.quoteContent) }}
+        div.attribution {{ '– ' + item.featuredQuote.quoteAttribution }}
+
+
+
+    // p {{{ JSON.stringify(item) }}}
+

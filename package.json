@@ -9,6 +9,7 @@
   "dependencies": {
     "dateformat": "^3.0.2",
     "dotenv": "^4.0.0",
+    "format-num": "^1.0.0",
     "markdown-it": "^8.4.0",
     "markdown-it-attrs": "^1.2.0",
     "markdown-it-container": "^2.0.0",
