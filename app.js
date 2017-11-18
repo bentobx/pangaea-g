@@ -19,40 +19,33 @@ const markdownItAttrs         = require('markdown-it-attrs')
 const markdownItContainer     = require('markdown-it-container')
 const markdownItSup           = require('markdown-it-sup')
 const markdown                = new MarkdownIt().use(markdownItTocAndAnchor, { anchorLink: false, tocFirstLevel: 3 })
+
 const locals                  = { }
+
+const stripe                  = require('stripe')(process.env.test_stripe_public_key);
+
 
 const datos = new SpikeDatoCMS({
   addDataTo: locals,
   token: process.env.dato_api_key,
   models: [
+  { name: 'quote' },
   {
-    name: 'quote',
+    name: 'person',
     template: {
-      path: 'views/_page.sgr',
-      output: (quote) => { return `quotes/${quote.slug}.html` }
+      path: 'views/_person.sgr',
+      output: (person) => { return `profile/${person.slug}.html` }
     }
   },
   {
     name: 'article',
     template: {
-      path: 'views/_page.sgr',
+      path: 'views/_article.sgr',
       output: (article) => { return `blog/${article.slug}.html` }
     }
   },
   {
     name: 'event',
-    // transform: (data) => {
-    //   if (data.dates) {
-    //     const dates = data.dates
-    //     dates.forEach(function(d, i) {
-    //       const newDate = new Date(d)
-    //       data[i].startDatetime = df(newDate.startDatetime, "mmmm yyyy")
-    //       data[i].endDatetime = df(newDate.endDatetime, "mmmm yyyy")
-    //       console.log(data.dates)
-    //     })
-    //   }
-    //   return data
-    // },
     transform: (data) => {
       if (data.tickets) {
         const tickets = data.tickets
@@ -60,7 +53,6 @@ const datos = new SpikeDatoCMS({
           tax = ticket.price * ticket.taxRate
           total = ticket.price + tax
           ticket.total = total
-          console.log(data)
         })
       }
       return data
@@ -84,12 +76,8 @@ const datos = new SpikeDatoCMS({
       output: (page) => {
         // TODO: this is a bit precarious – don't use if nesting goes more
         // than one level deep. Refactor.
-        if (page.parentId) {
-          return `/${page.parentId.slug}/${page.slug}.html`
-        }
-        else {
-          return `/${page.slug}.html`
-        }
+        if (page.parentId) { return `/${page.parentId.slug}/${page.slug}.html` }
+        else { return `/${page.slug}.html` }
       }
     },
     transform: (data) => {
@@ -109,6 +97,8 @@ const datos = new SpikeDatoCMS({
     }
   }]
 })
+
+
 
 module.exports = {
   devtool: 'source-map',

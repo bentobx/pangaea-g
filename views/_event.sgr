@@ -9,6 +9,18 @@ extends(src="../templates/_layout.sgr")
       each(loop="ticket in item.tickets")
         p {{  '$' + fn(ticket.total) }} (includes {{ '$' + fn(ticket.price * ticket.taxRate) }} HST)
 
+          form(action="https://zany-napkin.glitch.me/charge" method="POST")
+            script(
+              src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="pk_test_zi4yQH5XpDZAKCgXiRZSFmmn"
+              data-amount="{{ ticket.total * 100 }}"
+              data-name="Pangaea Holdings, Inc."
+              data-description="{{ item.title }}"
+              data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+              data-locale="auto"
+              data-currency="cad").
+                console.log('hello')
+            input(type="hidden" name="amount" value="{{ ticket.total * 100 }}")
 
 
         else
@@ -22,8 +34,6 @@ extends(src="../templates/_layout.sgr")
         //   li {{ '$' + fn(ticket.price) }}
 
 
-
-
     h4 Dates
 
     ul.dates
@@ -34,16 +44,3 @@ extends(src="../templates/_layout.sgr")
       div {{ md(item.description) }}
 
 
-
-
-    form(action="/your-server-side-code" method="POST")
-      script(
-        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-        data-key="pk_test_zi4yQH5XpDZAKCgXiRZSFmmn"
-        data-amount="2000"
-        data-name="Pangaea Holdings, Inc."
-        data-description="{{ item.title }}"
-        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-        data-locale="auto"
-        data-currency="cad").
-          // console.log('hello')

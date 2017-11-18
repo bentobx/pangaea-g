@@ -52,5 +52,9 @@ html
       .copyright
         p &copy; {{ df(new Date(), "yyyy")}} Pangaea Holdings Inc. / Pangaea Group
 
+    hr
+    pre {{ JSON.stringify(item, null, 2) }}
+
     block(name="javascript")
-      script(src="js/main.js" defer)
+      script(src="/js/main.js" defer)
+

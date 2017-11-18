@@ -1,0 +1,12 @@
+extends(src="../templates/_layout.sgr")
+  block(name="title")
+    title {{ item.name }} - Pangaea Consultants
+
+  block(name="content")
+    h1 {{ item.name }}
+    h2 {{ item.title }}
+    if(condition='{{ item.credentials }} !== null')
+      h3 {{ item.credentials }}
+
+
+

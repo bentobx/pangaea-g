@@ -1,7 +1,7 @@
 {
   "name": "Pangaea-2.0",
   "version": "0.0.1",
-  "author": "static-dev",
+  "author": "jennie",
   "ava": {
     "verbose": "true"
   },
@@ -29,6 +29,7 @@
     "spike-js-standards": "^2.0.1",
     "spike-page-id": "^1.0.0",
     "spike-records": "^2.2.0",
+    "stripe": "^5.3.0",
     "sugarml": "^0.6.0",
     "sugarss": "^1.0.1",
     "webpack": "^3.8.1"
