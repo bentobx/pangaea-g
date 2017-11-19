@@ -2,7 +2,7 @@ const env                     = require('dotenv').config()
 const path                    = require('path')
 const htmlStandards           = require('reshape-standard')
 
-const styleGuide              = require('postcss-style-guide')
+// const styleGuide              = require('postcss-style-guide')
 const cssStandards            = require('spike-css-standards')
 
 const jsStandards             = require('spike-js-standards')
@@ -21,8 +21,6 @@ const markdownItSup           = require('markdown-it-sup')
 const markdown                = new MarkdownIt().use(markdownItTocAndAnchor, { anchorLink: false, tocFirstLevel: 3 })
 
 const locals                  = { }
-
-const stripe                  = require('stripe')(process.env.test_stripe_public_key);
 
 const datos = new SpikeDatoCMS({
   addDataTo: locals,
@@ -82,6 +80,9 @@ const datos = new SpikeDatoCMS({
       }
     },
     transform: (data) => {
+      if (data.parentId === null) {
+        data.overview = true
+      }
       if (data.date) {
         const d = new Date(data.date)
         data.newdate = df(d, "mmmm yyyy")

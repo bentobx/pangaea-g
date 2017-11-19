@@ -5,7 +5,7 @@ extends(src="../templates/_layout.sgr")
   block(name="content")
     h1 {{ item.title }}
 
-    if(condition='{{item.tickets}} !== null')
+    if(condition='{{item.tickets !== null }}')
       each(loop="ticket in item.tickets")
         p {{  '$' + fn(ticket.total) }} (includes {{ '$' + fn(ticket.price * ticket.taxRate) }} HST)
 

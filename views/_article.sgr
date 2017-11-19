@@ -5,7 +5,7 @@ extends(src="../templates/_layout.sgr")
   block(name="content")
     h1 {{ item.title }}
 
-    if(condition='{{ item.publishDate }} !== null')
+    if(condition='{{ item.publishDate !== null }}')
       p {{ df(item.publishDate, "mmmm d, yyyy") }}
 
       each(loop="author in item.authors")

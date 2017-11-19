@@ -8,7 +8,7 @@ extends(src="../templates/_layout.sgr")
 
     ul#authorArticleList
 
-    if(condition='{{ item.credentials }} !== null')
+    if(condition='{{ item.credentials !== null }}')
       p {{ item.credentials }}
 
     h2 {{ item.title }}
@@ -25,7 +25,7 @@ extends(src="../templates/_layout.sgr")
 
     div {{ md(item.bio) }}
 
-    if(condition='{{item.eMailAddress}} !== null')
+    if(condition='{{item.eMailAddress !== null }}')
       a(href="mailto:{{ item.eMailAddress }}") Email {{ item.name }}
 
   block(name="javascript")

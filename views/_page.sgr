@@ -5,8 +5,18 @@ extends(src="../templates/_layout.sgr")
   block(name="content")
     h1 {{ item.title }}
 
-    if(condition='{{item.toc}} == true')
+    if(condition="{{ item.toc == true }} ")
       div {{ item.toc_content }}
 
-    if(condition='{{item.body}} !== null')
+    if(condition="{{ item.body !== null }}")
       div {{ md(item.body) }}
+
+    if(condition="{{item.slug == 'who-we-are'}}")
+      include(src='includes/_people_list.sgr')
+
+    if(condition="{{item.slug == 'blog'}}")
+      include(src='includes/_article_list.sgr')
+
+    if(condition="{{item.slug == 'quotes'}}")
+      include(src='includes/_quote_list.sgr')
+
