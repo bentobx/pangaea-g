@@ -32,14 +32,16 @@ html
           h4 Events
           if(condition="dato")
             each(loop="event, index in dato.event")
-              li: a(href="/events/{{ event.slug }}") {{ event.title }}
+              if(condition=" index < 3")
+                li: a(href="/events/{{ event.slug }}") {{ event.title }}
 
         .flex-1.articles
           h4 Articles
 
           if(condition="dato")
             each(loop="article, index in dato.article")
-              li: a(href="/blog/{{ article.slug }}") {{ article.title }}
+              if(condition=" index < 3")
+                li: a(href="/blog/{{ article.slug }}") {{ article.title }}
 
 
         .flex-1.events

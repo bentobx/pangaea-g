@@ -3,10 +3,70 @@ extends(src="../templates/_layout.sgr")
     title {{ item.name }} - Pangaea Consultants
 
   block(name="content")
+
     h1 {{ item.name }}
-    h2 {{ item.title }}
+
+    ul#authorArticleList
+
     if(condition='{{ item.credentials }} !== null')
-      h3 {{ item.credentials }}
+      p {{ item.credentials }}
 
+    h2 {{ item.title }}
 
+    img(src="//{{ dato._meta.imgixHost + item.image.path }}")
 
+    h3 Areas of Expertise
+
+    ul
+      each(loop="area in item.areasOfExpertise")
+        li {{ area.title }}
+
+    h2 About
+
+    div {{ md(item.bio) }}
+
+    if(condition='{{item.eMailAddress}} !== null')
+      a(href="mailto:{{ item.eMailAddress }}") Email {{ item.name }}
+
+  block(name="javascript")
+    script(type="text/javascript").
+
+      var header = document.querySelector('#authorArticleList');
+
+      var requestURL = '/articles.json';
+      var request = new XMLHttpRequest();
+      request.open('GET', requestURL);
+
+      request.responseType = 'json';
+      request.send();
+      request.onload = function() {
+        const articles = request.response;
+        getAuthorsArticles(articles, '{{ item.id }}')
+      }
+
+      function showArticles(postIds) {
+        var posts = postIds;
+        for (var i = 0; i < posts.length; i++) {
+          // TODO insert a nice list of links here
+          header.innerHTML += "<li><a href='/blog/" + posts[i].slug + "'>" + posts[i].title + "</a></li>"
+        }
+      }
+
+      function getAuthorsArticles(jsonObj, author) {
+        var posts = jsonObj;
+        for (var i = 0; i < posts.length; i++) {
+          var authors = posts[i].authors
+          var authorIds = new Array;
+          var authorPosts = new Array;
+
+          authors.forEach(function(names) {
+            authorIds.push(names.id)
+          });
+
+          if(authorIds.includes(author)) {
+            authorPosts.push(posts[i])
+          }
+          showArticles(authorPosts);
+
+        }
+      }

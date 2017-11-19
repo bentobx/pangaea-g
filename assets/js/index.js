@@ -16,3 +16,45 @@
 // }, function(err, charge) {
 //   // asynchronously called
 // });
+
+// var requestURL = '/articles.json';
+// var request = new XMLHttpRequest();
+// request.open('GET', requestURL);
+//
+// request.responseType = 'json';
+// request.send();
+// request.onload = function() {
+//   const articles = request.response;
+//   // console.log(articles);
+//   // showArticles(articles);
+//   getAuthorsArticles(articles, "129390")
+// }
+//
+// function showArticles(postIds) {
+//   // console.log(postIds)
+//   var posts = postIds;
+//   for (var i = 0; i < posts.length; i++) {
+//     console.log(posts[i].title)
+//   }
+// }
+//
+// function getAuthorsArticles(jsonObj, author) {
+//   var posts = jsonObj;
+//
+//   for (var i = 0; i < posts.length; i++) {
+//     var authors = posts[i].authors
+//     var authorIds = new Array;
+//     var authorPosts = new Array;
+//
+//     authors.forEach(function(names) {
+//       authorIds.push(names.id)
+//     });
+//
+//     if(authorIds.includes(author)) {
+//       authorPosts.push(posts[i])
+//     }
+//
+//     showArticles(authorPosts);
+//
+//   }
+// }

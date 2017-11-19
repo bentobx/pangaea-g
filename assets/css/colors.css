@@ -29,7 +29,7 @@
     --color-white-g1: #FFFFFF;
     --color-white-g2: #F4F3EE;
     --color-white-g3: #CCBA9A;
-    --color-primary-g1: rgb({{ item.colour.red }}, {{ item.colour.green }}, {{ item.colour.blue }});
+    --color-primary-g1: #000;
     --color-success-g1: #A0CE6D;
     --color-success-g2: #A4F1A1;
     --color-danger-g1: #C21734;
@@ -50,7 +50,7 @@
         and add the appropriate ones here **/
 
      /* Text colors */
-    --color-text-primary: #6c6c6c;
+    --color-text-primary: #000;
     --color-text-secondary: #333333;
     --color-text-caption: #6D6D6D;
     --color-text-link: #3F51B5;

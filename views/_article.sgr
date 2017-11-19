@@ -6,7 +6,7 @@ extends(src="../templates/_layout.sgr")
     h1 {{ item.title }}
 
     if(condition='{{ item.publishDate }} !== null')
-      p {{ df(item.publishDate, "dddd, mmmm d, yyyy") }}
+      p {{ df(item.publishDate, "mmmm d, yyyy") }}
 
       each(loop="author in item.authors")
         .byline

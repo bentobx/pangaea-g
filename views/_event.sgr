@@ -9,7 +9,7 @@ extends(src="../templates/_layout.sgr")
       each(loop="ticket in item.tickets")
         p {{  '$' + fn(ticket.total) }} (includes {{ '$' + fn(ticket.price * ticket.taxRate) }} HST)
 
-          form(action="https://zany-napkin.glitch.me/charge" method="POST")
+          form(action="https://pangaea-checkout.glitch.me/charge" method="POST")
             script(
               src="https://checkout.stripe.com/checkout.js" class="stripe-button"
               data-key="pk_test_zi4yQH5XpDZAKCgXiRZSFmmn"
@@ -20,19 +20,10 @@ extends(src="../templates/_layout.sgr")
               data-locale="auto"
               data-currency="cad").
                 console.log('hello')
-            input(type="hidden" name="amount" value="{{ ticket.total * 100 }}")
-
+            input(type="hidden" name="amount" value="{{ Math.round(ticket.total * 100) }}")
 
         else
           li {{ '$' + fn(ticket.price) }}
-        // if(condition='{{ ticket.tax }} === true')
-        //   p {{ '$' + fn(ticket.price) }} {{ ticket.title }}
-        //   p + {{ '$' + fn(ticket.price * ticket.taxRate) }} HST
-        //   p = {{ '$' + fn(ticket.price + (ticket.price * ticket.taxRate)) }}
-        //
-        // else
-        //   li {{ '$' + fn(ticket.price) }}
-
 
     h4 Dates
 

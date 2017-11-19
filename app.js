@@ -24,7 +24,6 @@ const locals                  = { }
 
 const stripe                  = require('stripe')(process.env.test_stripe_public_key);
 
-
 const datos = new SpikeDatoCMS({
   addDataTo: locals,
   token: process.env.dato_api_key,
@@ -36,13 +35,15 @@ const datos = new SpikeDatoCMS({
       path: 'views/_person.sgr',
       output: (person) => { return `profile/${person.slug}.html` }
     }
+
   },
   {
     name: 'article',
     template: {
       path: 'views/_article.sgr',
       output: (article) => { return `blog/${article.slug}.html` }
-    }
+    },
+    json: 'articles.json'
   },
   {
     name: 'event',
@@ -106,7 +107,7 @@ module.exports = {
   ignore: [ '**/layout.sgr', '**/.*', 'readme.md', 'yarn.lock', 'custom_modules/**' ],
   reshape: htmlStandards({
     parser: sugarml,
-    locals: { df: df.bind(df), fn: fn.bind(fn), md: markdown.render.bind(markdown) } ,
+    locals: { df: df.bind(df), fn: fn.bind(fn), md: markdown.render.bind(markdown)},
     markdownPlugins: [ markdownitFootnote, markdownItAttrs, markdownItContainer, markdownItSup ],
     retext: { quotes: false }
   }),
