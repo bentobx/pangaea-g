@@ -1,0 +1,18 @@
+extends(src="../templates/_layout.sgr")
+  block(name="title")
+    title {{ item.title }} - Pangaea Consultants
+
+  block(name="content")
+    h1 {{ item.title }}
+
+    if(condition='{{ item.publishDate !== null }}')
+      p {{ df(item.publishDate, "mmmm d, yyyy") }}
+
+      each(loop="author in item.authors")
+        .byline
+          p
+            | by&nbsp;
+            a(href="/profile/{{ author.slug }}") {{ author.name }},
+            | &nbsp;{{ author.title}}
+
+    div {{ md(item.body) }}

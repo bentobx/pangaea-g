@@ -1,7 +1,7 @@
 {
   "name": "Pangaea-2.0",
   "version": "0.0.1",
-  "author": "static-dev",
+  "author": "jennie",
   "ava": {
     "verbose": "true"
   },
@@ -9,19 +9,34 @@
   "dependencies": {
     "dateformat": "^3.0.2",
     "dotenv": "^4.0.0",
+    "format-num": "^1.0.0",
     "markdown-it": "^8.4.0",
+    "markdown-it-attrs": "^1.2.0",
+    "markdown-it-container": "^2.0.0",
     "markdown-it-footnote": "^3.0.1",
-    "reshape-standard": "^1.0.0",
-    "spike": "^1.3.0",
+    "markdown-it-sup": "^1.0.0",
+    "markdown-it-toc-and-anchor": "^4.1.2",
+    "reshape": "^0.4.1",
+    "reshape-content": "^0.2.0",
+    "reshape-expressions": "^0.1.5",
+    "reshape-layouts": "^1.0.0",
+    "reshape-markdown": "^1.1.1",
+    "reshape-standard": "^3.1.1",
+    "spike": "^2.2.1",
     "spike-collections": "git+https://github.com/jennie/spike-collections.git",
-    "spike-css-standards": "^1.0.0",
+    "spike-css-standards": "^3.0.0",
+    "spike-datocms": "^2.2.2",
     "spike-js-standards": "^2.0.1",
     "spike-page-id": "^1.0.0",
-    "spike-records": "^1.0.1",
-    "webpack": "^2.3.3"
+    "spike-records": "^2.2.0",
+    "stripe": "^5.3.0",
+    "sugarml": "^0.6.0",
+    "sugarss": "^1.0.1",
+    "webpack": "^3.8.1"
   },
   "devDependencies": {
-    "ava": "^0.19.0",
+    "ava": "^0.23.0",
+    "postcss-style-guide": "^0.14.0",
     "snazzy": "^7.0.0",
     "standard": "^10.0.0"
   },
