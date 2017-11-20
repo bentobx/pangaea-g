@@ -7,6 +7,7 @@
   },
   "bugs": "",
   "dependencies": {
+    "@std/esm": "^0.16.0",
     "dateformat": "^3.0.2",
     "dotenv": "^4.0.0",
     "format-num": "^1.0.0",
@@ -36,6 +37,7 @@
   },
   "devDependencies": {
     "ava": "^0.23.0",
+    "postcss-nesting": "^4.2.1",
     "postcss-style-guide": "^0.14.0",
     "snazzy": "^7.0.0",
     "standard": "^10.0.0"

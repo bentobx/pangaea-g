@@ -1,0 +1,52 @@
+@import "colors.sss"
+@import "typography.sss"
+
+/* NESTING:         */
+/* @nest & selector */
+/*   is: cool       */
+/*                  */
+/*   ~~~ OR ~~~     */
+/*                  */
+/* & selector       */
+/*   is: cool       */
+
+
+#navbar
+  display: flex
+  justify-content: flex-end
+
+  @nest & li
+    display: inline
+
+.sidebar
+  grid-area: sidebar
+
+.content
+  grid-area: content
+
+.header
+  background: #eee
+  grid-area: header
+
+.footer
+  grid-area: footer
+
+.wrapper
+  display: grid
+  grid-gap: 10px
+  grid-template-columns: 25% 1fr
+  grid-template-areas:
+    "header header header"
+    "sidebar content content"
+    "footer footer footer"
+  background-color: #fff
+  color: #444
+
+.box
+  color: #fff
+  border-radius: 5px
+  padding: 10px
+  font-size: 150%
+
+.header, .footer
+  background-color: #999

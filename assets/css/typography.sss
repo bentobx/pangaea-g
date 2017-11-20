@@ -1,0 +1,83 @@
+@import 'colors.sss'
+@import url('https://fonts.googleapis.com/css?family=Roboto')
+
+:root
+  --display-start-font-size: 24px
+  --display-4-font-size: calc(var(--display-start-font-size) * 3.3)
+  --display-3-font-size: calc(var(--display-start-font-size) * 1.64)
+  --display-2-font-size: calc(var(--display-start-font-size) * 1.32)
+  --display-1-font-size: var(--display-start-font-size)
+
+h1, h2, h3, h4, h5, h6
+  font-weight: normal
+
+p, div
+  line-height: 1.5em
+  font-size: 16px
+
+div
+  font-family: 'Roboto', sans-serif
+
+p
+  font-family: 'Roboto', sans-serif
+
+body *
+  line-height: 1.5em
+  color: var(--color-text-primary)
+
+code, kbd, pre, samp
+  font-family: monospace, monospace
+  font-size: 14px
+
+*[class^='display-']
+  font-family: 'Roboto', serif
+  letter-spacing: 0.01em
+
+.display-4
+  font-size: var(--display-4-font-size)
+
+.display-3
+  font-size: var(--display-3-font-size)
+
+.display-2
+  font-size: var(--display-2-font-size)
+
+.display-1
+  font-size: var(--display-1-font-size)
+
+.headline, .title, .subheading, .body-2, .caption, .label
+  font-family: 'Roboto', sans-serif
+
+.headline, .title
+  padding-bottom: 12px
+  position: relative
+  display: inline-block
+  text-transform: uppercase
+
+.headline:after, .title:after
+  content: ''
+  border-bottom: 1px solid var(--color-primary)
+  position: absolute
+  left: 12px
+  right: 12px
+  bottom: 0
+
+.headline
+  font-size: 18px
+  font-weight: 300
+
+.title
+  font-size: 16px
+
+.subheading
+  font-size: 18px
+
+.body-2
+  font-weight: bold
+
+.caption, .label
+  color: var(--color-primary)
+  font-size: 14px
+
+.caption
+  text-transform: uppercase

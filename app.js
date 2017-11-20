@@ -8,7 +8,7 @@ const cssStandards            = require('spike-css-standards')
 const jsStandards             = require('spike-js-standards')
 const pageId                  = require('spike-page-id')
 const sugarml                 = require('sugarml')
-// const sugarss                 = require('sugarss')
+const sugarss                 = require('sugarss')
 const df                      = require('dateformat')
 const fn                      = require('format-num')
 const SpikeDatoCMS            = require('spike-datocms')
@@ -27,23 +27,20 @@ const datos = new SpikeDatoCMS({
   token: process.env.dato_api_key,
   models: [
   { name: 'quote' },
-  {
-    name: 'person',
+  { name: 'person',
     template: {
       path: 'views/_person.sgr',
       output: (person) => { return `profile/${person.slug}.html` }
     }
   },
-  {
-    name: 'article',
+  { name: 'article',
     template: {
       path: 'views/_article.sgr',
       output: (article) => { return `blog/${article.slug}.html` }
     },
     json: 'articles.json'
   },
-  {
-    name: 'event',
+  { name: 'event',
     transform: (data) => {
       if (data.tickets) {
         const tickets = data.tickets
@@ -60,15 +57,13 @@ const datos = new SpikeDatoCMS({
       output: (event) => { return `events/${event.slug}.html` }
     }
   },
-  {
-    name: 'home_page',
+  { name: 'home_page',
     template: {
       path: 'views/_home_page.sgr',
       output: (page) => { return `/index.html` }
     }
   },
-  {
-    name: 'page',
+  { name: 'page',
     template: {
       path: 'views/_page.sgr',
       output: (page) => {
@@ -101,8 +96,8 @@ const datos = new SpikeDatoCMS({
 
 module.exports = {
   devtool: 'source-map',
-  matchers: { html: '*(**/)*.sgr', css: '*(**/)*.css' },
-  ignore: [ '**/layout.sgr', '**/.*', 'readme.md', 'yarn.lock', 'custom_modules/**' ],
+  matchers: { html: '*(**/)*.sgr', css: '*(**/)*.sss' },
+  ignore: [ '**/layout.sgr', '**/.*', 'readme.md', 'yarn.lock', 'custom_modules/**', 'views/includes/**' ],
   reshape: htmlStandards({
     parser: sugarml,
     locals: { df: df.bind(df), fn: fn.bind(fn), md: markdown.render.bind(markdown)},
@@ -110,7 +105,7 @@ module.exports = {
     retext: { quotes: false }
   }),
   postcss: cssStandards({
-    
+    parser: sugarss,
     locals: { datos }
     // ,
     // appendPlugins: styleGuide({
