@@ -3,60 +3,63 @@ html
   head
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
-    meta(name="author" content="Bento Box")
     meta(name="viewport" content="width=device-width, initial-scale=1")
 
     block(name="title")
-      p hello!
-      // title {{ dato._meta.globalSeo.fallbackSeo.title }}
-      // meta(name="description" content="{{ dato._meta.globalSeo.fallbackSeo.description }}")
+      title Pangaea Consultants
 
     link(rel="stylesheet" href="/css/index.css")
 
-  body.theme-default(id="")
+  body
 
-    block(name="nav")
-      #navbar
-        ul
-          li: a(href="/") Home
-          li: a(href="/about") About
-          li: a(href="/services") Services
-          li: a(href="/blog") Blog
-          li: a(href="/contact") Contact
+    .wrapper
 
-    block(name="content")
+      .box.header
+        block(name="nav")
+          #navbar
+            ul
+              li: a(href="/") Home
+              li: a(href="/about") About
+              li: a(href="/services") Services
+              li: a(href="/blog") Blog
+              li: a(href="/contact") Contact
 
-    block(name="footer")
-      .horizontal
-        .flex-1.events
-          h4 Events
-          if(condition="dato")
-            each(loop="event, index in dato.event")
-              if(condition=" index < 3")
-                li: a(href="/events/{{ event.slug }}") {{ event.title }}
+      .box.content
+        block(name="content")
+          p Content
 
-        .flex-1.articles
-          h4 Articles
+      .box.sidebar
+        block(name="sidebar")
+          p Sidebar
 
-          if(condition="dato")
-            each(loop="article, index in dato.article")
-              if(condition=" index < 3")
-                li: a(href="/blog/{{ article.slug }}") {{ article.title }}
+      .box.footer
+        block(name="footer")
+          .horizontal
+            .flex-1.events
+              h4 Events
+              if(condition="dato")
+                each(loop="event, index in dato.event")
+                  if(condition=" index < 3")
+                    li: a(href="/events/{{ event.slug }}") {{ event.title }}
+
+            .flex-1.articles
+              h4 Articles
+
+              if(condition="dato")
+                each(loop="article, index in dato.article")
+                  if(condition=" index < 3")
+                    li: a(href="/blog/{{ article.slug }}") {{ article.title }}
 
 
-        .flex-1.events
-          h4 Get in touch
+            .flex-1.events
+              h4 Get in touch
 
-          p We know what keeps you up at night.
-          p: a(href="/contact") Let us help you achieve your goals.
+              p We know what keeps you up at night.
+              p: a(href="/contact") Let us help you achieve your goals.
 
 
-      .copyright
-        p &copy; {{ df(new Date(), "yyyy")}} Pangaea Holdings Inc. / Pangaea Group
+          .copyright
+            p &copy; {{ df(new Date(), "yyyy")}} Pangaea Holdings Inc. / Pangaea Group
 
-    hr
-    pre {{ JSON.stringify(item, null, 2) }}
-
-    block(name="javascript")
-      script(src="/js/main.js" defer)
-
+      // block(name="javascript")
+      //   script(src="/js/main.js" defer)

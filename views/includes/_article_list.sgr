@@ -1,11 +1,12 @@
-//
-//   each(loop="article in dato.article")
-//     div.article.card
-//       h3: a(href="") {{ article.title }}
-//       .publish-date {{ df(article.publishDate, "dddd, mmmm d, yyyy") }}
-//       .summary {{ article.summary }}
-//       hr
-//
-
 if(condition='dato')
-  pre {{ JSON.stringify(dato.article, null, 2) }}
+  ul.article-list
+    each(loop="article in dato.article ")
+      li.article
+        .publish-date {{ df(article.publishDate, "dddd, mmmm d, yyyy") }}
+        .author
+          each(loop="author in article.authors")
+            a(href="/profile/{{ author.slug }}") {{ author.name }}
+
+        h3: a(href="") {{ article.title }}
+        if(condition='{{ article.summary }} !== null')
+          .summary {{ article.summary }}

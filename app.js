@@ -8,7 +8,7 @@ const cssStandards            = require('spike-css-standards')
 const jsStandards             = require('spike-js-standards')
 const pageId                  = require('spike-page-id')
 const sugarml                 = require('sugarml')
-const sugarss                 = require('sugarss')
+// const sugarss                 = require('sugarss')
 const df                      = require('dateformat')
 const fn                      = require('format-num')
 const SpikeDatoCMS            = require('spike-datocms')
@@ -33,7 +33,6 @@ const datos = new SpikeDatoCMS({
       path: 'views/_person.sgr',
       output: (person) => { return `profile/${person.slug}.html` }
     }
-
   },
   {
     name: 'article',
@@ -100,8 +99,6 @@ const datos = new SpikeDatoCMS({
   }]
 })
 
-
-
 module.exports = {
   devtool: 'source-map',
   matchers: { html: '*(**/)*.sgr', css: '*(**/)*.css' },
@@ -113,6 +110,7 @@ module.exports = {
     retext: { quotes: false }
   }),
   postcss: cssStandards({
+    
     locals: { datos }
     // ,
     // appendPlugins: styleGuide({

@@ -1,5 +1,7 @@
 @import 'colors.css';
 @import 'typography.css';
+@import 'grid.css';
+
 /*@import 'buttons.css';*/
 /*@import 'cards.css';*/
 /*@import 'logo.css';*/
@@ -7,6 +9,6 @@
 /*@import 'tabs.css';*/
 /*@import 'inputs.css';*/
 /*@import 'spinners.css';*/
-@import 'layouts.css';
+/*@import 'layouts.css';*/
 /*@import 'layers.css';*/
 /*@import 'resets.css';*/
