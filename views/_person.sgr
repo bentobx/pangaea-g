@@ -1,71 +1,63 @@
 extends(src="../templates/_layout.sgr")
-    block(name="title")
-        title {{ item.name }} - Pangaea Consultants
+  block(name="title")
+      title {{ item.name }} - Pangaea Consultants
 
-    block(name="content")
+  block(name="content")
+    h1 {{ item.name }}
+    ul#authorArticleList
+    if(condition='{{ item.credentials !== null }}')
+      p {{ item.credentials }}
 
-        h1 {{ item.name }}
+    h2 {{ item.title }}
 
-        ul#authorArticleList
+    img(src="//{{ dato._meta.imgixHost + item.image.path }}")
 
-        if(condition='{{ item.credentials !== null }}')
-            p {{ item.credentials }}
+    h3 Areas of Expertise
 
-        h2 {{ item.title }}
+    ul
+      each(loop="area in item.areasOfExpertise")
+        li {{ area.title }}
 
-        img(src="//{{ dato._meta.imgixHost + item.image.path }}")
+    h2 About
 
-        h3 Areas of Expertise
+    div {{ md(item.bio) }}
 
-        ul
-            each(loop="area in item.areasOfExpertise")
-                li {{ area.title }}
+    if(condition='{{item.eMailAddress !== null }}')
+      a(href="mailto:{{ item.eMailAddress }}") Email {{ item.name }}
 
-        h2 About
+  block(name="javascript")
+    script(type="text/javascript").
 
-        div {{ md(item.bio) }}
+      var header = document.querySelector('#authorArticleList')
 
-        if(condition='{{item.eMailAddress !== null }}')
-            a(href="mailto:{{ item.eMailAddress }}") Email {{ item.name }}
+      var requestURL = '/articles.json'
+      var request = new XMLHttpRequest()
+      request.open('GET', requestURL)
 
-    block(name="javascript")
-        script(type="text/javascript").
+      request.responseType = 'json'
+      request.send()
+      request.onload = function() {
+        const articles = request.response
+        getAuthorsArticles(articles, '{{ item.id }}')
+      }
 
-          var header = document.querySelector('#authorArticleList');
+      function showArticles(postIds) {
+        var posts = postIds
+        for (var i = 0; i < posts.length; i++) {
+          header.innerHTML += "<li><a href='/blog/" + posts[i].slug + "'>" + posts[i].title + "</a></li>"
+        }
+      }
 
-          var requestURL = '/articles.json';
-          var request = new XMLHttpRequest();
-          request.open('GET', requestURL);
+      function getAuthorsArticles(jsonObj, author) {
+        var posts = jsonObj
+        for (var i = 0; i < posts.length; i++) {
+          var authors = posts[i].authors
+          var authorIds = new Array
+          var authorPosts = new Array
+          authors.forEach(function(names) { authorIds.push(names.id) })
 
-          request.responseType = 'json';
-          request.send();
-          request.onload = function() {
-            const articles = request.response;
-            getAuthorsArticles(articles, '{{ item.id }}')
-          }
+          if(authorIds.includes(author)) { authorPosts.push(posts[i]) }
+          showArticles(authorPosts)
 
-          function showArticles(postIds) {
-            var posts = postIds;
-            for (var i = 0; i < posts.length; i++) {
-              header.innerHTML += "<li><a href='/blog/" + posts[i].slug + "'>" + posts[i].title + "</a></li>"
-            }
-          }
-
-          function getAuthorsArticles(jsonObj, author) {
-            var posts = jsonObj;
-            for (var i = 0; i < posts.length; i++) {
-              var authors = posts[i].authors
-              var authorIds = new Array;
-              var authorPosts = new Array;
-
-              authors.forEach(function(names) {
-                authorIds.push(names.id)
-              });
-
-              if(authorIds.includes(author)) {
-                authorPosts.push(posts[i])
-              }
-              showArticles(authorPosts);
-
-            }
-          }
+        }
+      }

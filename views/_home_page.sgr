@@ -15,8 +15,3 @@ extends(src="../templates/_layout.sgr")
       blockquote
         div {{ md(item.featuredQuote.quoteContent) }}
         div.attribution {{ '– ' + item.featuredQuote.quoteAttribution }}
-
-
-
-    // p {{{ JSON.stringify(item) }}}
-

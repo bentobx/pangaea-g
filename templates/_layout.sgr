@@ -1,61 +1,63 @@
 doctype html
 html
-    head
-        meta(charset="utf-8")
-        meta(http-equiv="X-UA-Compatible" content="IE=edge")
-        meta(name="viewport" content="width=device-width, initial-scale=1")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
 
-        block(name="title")
-          title Pangaea Consultants
+    block(name="title")
+      title Pangaea Consultants
 
-        link(rel="stylesheet" href="/css/index.css")
-    body
-        .wrapper
-            .box.header
-                block(name="nav")
-                    #navbar
-                        ul
-                          li: a(href="/") Home
-                          li: a(href="/about") About
-                          li: a(href="/services") Services
-                          li: a(href="/blog") Blog
-                          li: a(href="/contact") Contact
+    link(rel="stylesheet" href="/css/index.css")
+  body
+    .wrapper
+      .box.header
+        if(condition="dato")
+          .logo: img(src="//{{ dato._meta.imgixHost + dato._meta.theme.logo.path }}")
 
-            .box.content
-                block(name="content")
-                    p Content
+          block(name="nav")
+            #navbar
+              ul
+                li: a(href="/") Home
+                li: a(href="/about") About
+                li: a(href="/services") Services
+                li: a(href="/blog") Blog
+                li: a(href="/contact") Contact
 
-            .box.sidebar
-                block(name="sidebar")
-                    p Sidebar
+      .box.content
+        block(name="content")
+          p Content
 
-            .box.footer
-                block(name="footer")
-                    .horizontal
-                        .flex-1.events
-                            h4 Events
-                                if(condition="dato")
-                                    each(loop="event, index in dato.event")
-                                        if(condition=" index < 3")
-                                            li: a(href="/events/{{ event.slug }}") {{ event.title }}
+      .box.sidebar
+        block(name="sidebar")
+          p Sidebar
 
-                        .flex-1.articles
-                            h4 Articles
-                                if(condition="dato")
-                                    each(loop="article, index in dato.article")
-                                        if(condition=" index < 3")
-                                            li: a(href="/blog/{{ article.slug }}") {{ article.title }}
+      .box.footer
+        block(name="footer")
+          .horizontal
+            .flex-1.events
+              h4 Events
+              if(condition="dato")
+                each(loop="event, index in dato.event")
+                  if(condition=" index < 3")
+                    li: a(href="/events/{{ event.slug }}") {{ event.title }}
 
-
-                        .flex-1.events
-                            h4 Get in touch
-                            p We know what keeps you up at night.
-                            p: a(href="/contact") Let us help you achieve your goals.
+            .flex-1.articles
+              h4 Articles
+              if(condition="dato")
+                each(loop="article, index in dato.article")
+                  if(condition=" index < 3")
+                    li: a(href="/blog/{{ article.slug }}") {{ article.title }}
 
 
-                    .copyright
-                        p &copy; {{ df(new Date(), "yyyy")}} Pangaea Holdings Inc. / Pangaea Group
+            .flex-1.events
+              h4 Get in touch
+              p We know what keeps you up at night.
+              p: a(href="/contact") Let us help you achieve your goals.
 
-        block(name="javascript")
-            script(src="/js/main.js" defer)
-            
+
+          .copyright
+            p &copy; {{ df(new Date(), "yyyy")}} Pangaea Holdings Inc. / Pangaea Group
+
+    block(name="javascript")
+        script(src="/js/main.js" defer)
