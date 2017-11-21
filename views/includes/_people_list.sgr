@@ -1,6 +1,6 @@
 each(loop="person in dato.person")
   .card.person
-    .headshot: img(src="//{{ dato._meta.imgixHost + person.image.path }}")
+    figure.headshot: img(src="//{{ dato._meta.imgixHost + person.image.path }}")
     if(condition="person.credentials")
       h2
         a(href="/profile/{{ person.slug }}") {{ person.name }},

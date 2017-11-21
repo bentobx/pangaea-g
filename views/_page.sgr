@@ -2,6 +2,9 @@ extends(src="../templates/_layout.sgr")
   block(name="title")
     title {{ item.title }} - Pangaea Consultants
 
+  block(name="sidebar")
+    include(src='/includes/_nav.sgr')
+
   block(name="content")
     h1 {{ item.title }}
 
@@ -19,4 +22,3 @@ extends(src="../templates/_layout.sgr")
 
     if(condition="{{item.slug == 'quotes'}}")
       include(src='includes/_quote_list.sgr')
-
