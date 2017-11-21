@@ -1,9 +1,10 @@
-if(condition="dato")
-  if(condition="{{ item }}")
-    h2 {{ item.id }}
-    //  find all pages with the same parentId as this page's parentID, OR, if this page does not have a parentID, find all pages with this page's ID as their parentID
-    each(loop="page, i in dato.page")
-      if(condition="{{ page.parentId.id !== null }}")
-        // pre {{ page.parentId.id }} // {{ item.parentId.id }}
-        if(condition="{{ page.parentId.id == item.id }}")
-          p {{ page.title }}
+ul#sidebar-nav
+  each(loop="page, i in dato.page")
+      //  find all pages with the same parentId as this item's parentID
+      if(condition="{{ page.parentId !== null && item.parentId !== null && (page.parentId.id == item.parentId.id) }}")
+        li: a(href="/{{ page.parentId.slug }}/{{ page.slug }}") {{ page.title }}
+
+      // OR, if this page does not have a parentID, find all pages with this item's ID as their parentID
+      else
+        if(condition="{{ page.parentId !== null && (page.parentId.id == item.id) }}")
+          li: a(href="/{{ page.parentId.slug }}/{{ page.slug }}") {{ page.title }}

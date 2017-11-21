@@ -19,3 +19,4 @@ extends(src="../templates/_layout.sgr")
           | &nbsp;{{ author.title }}
 
     div {{ md(item.body) }}
+    

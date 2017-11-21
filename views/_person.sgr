@@ -26,10 +26,8 @@ extends(src="../templates/_layout.sgr")
       a(href="mailto:{{ item.eMailAddress }}") Email {{ item.name }}
 
   block(name="javascript")
-    script(type="text/javascript").
-
+    script.
       var header = document.querySelector('#authorArticleList')
-
       var requestURL = '/articles.json'
       var request = new XMLHttpRequest()
       request.open('GET', requestURL)
@@ -40,14 +38,12 @@ extends(src="../templates/_layout.sgr")
         const articles = request.response
         getAuthorsArticles(articles, '{{ item.id }}')
       }
-
       function showArticles(postIds) {
         var posts = postIds
         for (var i = 0; i < posts.length; i++) {
           header.innerHTML += "<li><a href='/blog/" + posts[i].slug + "'>" + posts[i].title + "</a></li>"
         }
       }
-
       function getAuthorsArticles(jsonObj, author) {
         var posts = jsonObj
         for (var i = 0; i < posts.length; i++) {
@@ -55,9 +51,7 @@ extends(src="../templates/_layout.sgr")
           var authorIds = new Array
           var authorPosts = new Array
           authors.forEach(function(names) { authorIds.push(names.id) })
-
           if(authorIds.includes(author)) { authorPosts.push(posts[i]) }
           showArticles(authorPosts)
-
         }
       }

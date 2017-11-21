@@ -6,7 +6,7 @@ extends(src="../templates/_layout.sgr")
     include(src='/includes/_nav.sgr')
 
   block(name="content")
-    h1 {{ item.title }}
+    // h1 {{ item.title }}
 
     if(condition="{{ item.toc == true }} ")
       div {{ item.toc_content }}
@@ -14,11 +14,12 @@ extends(src="../templates/_layout.sgr")
     if(condition="{{ item.body !== null }}")
       div {{ md(item.body) }}
 
-    if(condition="{{item.slug == 'who-we-are'}}")
+    if(condition="{{item.slug === 'who-we-are'}}")
       include(src='includes/_people_list.sgr')
 
-    if(condition="{{item.slug == 'blog'}}")
+    if(condition="{{item.slug === 'blog'}}")
       include(src='includes/_article_list.sgr')
 
-    if(condition="{{item.slug == 'quotes'}}")
+    if(condition="{{item.slug === 'quotes'}}")
       include(src='includes/_quote_list.sgr')
+      

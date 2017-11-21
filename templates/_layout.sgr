@@ -30,7 +30,7 @@ html
 
       .box.sidebar
         block(name="sidebar")
-          p hello
+          p hello fds
 
       .box.footer
         block(name="footer")

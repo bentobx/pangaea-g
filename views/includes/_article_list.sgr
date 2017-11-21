@@ -2,6 +2,8 @@ if(condition='dato')
   ul.article-list
     each(loop="article in dato.article ")
       li.article
+        pre {{ JSON.stringify(article, null, 4) }}
+
         .publish-date {{ df(article.publishDate, "dddd, mmmm d, yyyy") }}
         .author
           each(loop="author in article.authors")

@@ -33,5 +33,3 @@ extends(src="../templates/_layout.sgr")
 
     if(condition='{{item.description}} !== null')
       div {{ md(item.description) }}
-
-
