@@ -6,7 +6,6 @@ extends(src="../templates/_layout.sgr")
     include(src='/includes/_nav.sgr')
 
   block(name="content")
-    // h1 {{ item.title }}
 
     if(condition="{{ item.toc == true }} ")
       div {{ item.toc_content }}
@@ -22,4 +21,3 @@ extends(src="../templates/_layout.sgr")
 
     if(condition="{{item.slug === 'quotes'}}")
       include(src='includes/_quote_list.sgr')
-      

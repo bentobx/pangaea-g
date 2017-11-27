@@ -9,7 +9,8 @@ html
       title Pangaea Consultants
 
     link(rel="stylesheet" href="/css/index.css")
-  body
+
+  body(id="{{ typeof item.slug === 'undefined' ? pageId : item.slug }}" class="{{ pageId }}")
     .wrapper
       .box.header
         if(condition="dato")
@@ -26,11 +27,9 @@ html
 
       .box.content
         block(name="content")
-          p Content
 
       .box.sidebar
         block(name="sidebar")
-          p hello fds
 
       .box.footer
         block(name="footer")

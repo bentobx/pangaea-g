@@ -40,6 +40,12 @@ const datos = new SpikeDatoCMS({
     },
     json: 'articles.json'
   },
+  { name: 'report',
+    template: {
+      path: 'views/_article.sgr',
+      output: (article) => { return `reports/${article.slug}.html` }
+    }
+  },
   { name: 'event',
     transform: (data) => {
       if (data.tickets) {
@@ -98,10 +104,16 @@ const datos = new SpikeDatoCMS({
 module.exports = {
   devtool: 'source-map',
   matchers: { html: '*(**/)*.sgr', css: '*(**/)*.sss' },
-  ignore: [ '**/layout.sgr', '**/.*', 'readme.md', 'yarn.lock', 'custom_modules/**', 'views/includes/**' ],
-  reshape: htmlStandards({
+  ignore: [ '**/_layout.sgr', '**/layout.sgr', '**/.*', 'readme.md', 'yarn.lock', 'custom_modules/**', 'views/includes/**' ],
+  reshape: htmlStandards ({
     parser: sugarml,
-    locals: { df: df.bind(df), fn: fn.bind(fn), md: markdown.render.bind(markdown)},
+    // webpack: ctx,
+    locals: (ctx) => { return Object.assign(locals,
+      { pageId: pageId(ctx) },
+      { df: df.bind(df) },
+      { fn: fn.bind(fn) },
+      { md: markdown.render.bind(markdown) }
+    )},
     markdownPlugins: [ markdownitFootnote, markdownItAttrs, markdownItContainer, markdownItSup ],
     retext: { quotes: false }
   }),

@@ -35,6 +35,12 @@
 .footer
   grid-area: footer
 
+#_home_page
+  @nest & .wrapper
+    grid-template-areas:
+      "header header header"
+      "content content content"
+      "footer footer footer"
 .wrapper
   display: grid
   grid-gap: 1rem
