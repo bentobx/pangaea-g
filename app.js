@@ -44,6 +44,14 @@ const datos = new SpikeDatoCMS({
     template: {
       path: 'views/_report.sgr',
       output: (report) => { return `reports/${report.slug}.html` }
+    },
+    transform: (data) => {
+        markdown.render(data.body, {
+          tocCallback: function(tocMarkdown, tocArray, tocHtml) {
+            data.toc_content = tocHtml
+          }
+        })
+      return data
     }
   },
   { name: 'event',

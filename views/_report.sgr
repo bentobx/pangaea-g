@@ -1,20 +1,28 @@
-block(name="title")
-  title {{ item.title }} - Pangaea Consultants
+extends(src="../templates/_layout.sgr")
+  block(name="title")
+    title {{ item.title }} - Pangaea Consultants
 
-block(name="sidebar")
-  p Blog sidebar
+  block(name="sidebar")
+    p Blog sidebar
 
-block(name="content")
-  h1 {{ item.title }}
+  block(name="content")
+    h2 {{ item.reportType }}
 
-  if(condition='{{ item.publishDate !== null }}')
-    p {{ df(item.publishDate, "mmmm d, yyyy") }}
+    h1 {{ item.title }}
 
-  each(loop="author in item.authors")
-    div.byline
-      p
-        | by&nbsp;
-        a(href="/profile/{{ author.slug }}") {{ author.name }},
-        | &nbsp;{{ author.title }}
+    if(condition='{{ item.publishDate !== null }}')
+      p {{ df(item.publishDate, "mmmm d, yyyy") }}
 
-  div {{ md(item.body) }}
+    // pre {{ JSON.stringify(item, null, 2) }}
+
+
+    div {{ item.toc_content }}
+
+    each(loop="author in item.authors")
+      div.byline
+        p
+          | by&nbsp;
+          a(href="/profile/{{ author.slug }}") {{ author.name }},
+          | &nbsp;{{ author.title }}
+
+    div {{ md(item.body) }}
