@@ -42,8 +42,8 @@ const datos = new SpikeDatoCMS({
   },
   { name: 'report',
     template: {
-      path: 'views/_article.sgr',
-      output: (article) => { return `reports/${article.slug}.html` }
+      path: 'views/_report.sgr',
+      output: (report) => { return `reports/${report.slug}.html` }
     }
   },
   { name: 'event',
