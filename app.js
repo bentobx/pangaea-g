@@ -43,7 +43,7 @@ const datos = new SpikeDatoCMS({
   { name: 'report',
     template: {
       path: 'views/_report.sgr',
-      output: (report) => { return `reports/${report.slug}.html` }
+      output: (report) => { return `reports/${report.reportType.slug}/${report.slug}.html` }
     },
     transform: (data) => {
         markdown.render(data.body, {
