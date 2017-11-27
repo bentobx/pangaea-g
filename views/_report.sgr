@@ -6,7 +6,7 @@ extends(src="../templates/_layout.sgr")
     p Blog sidebar
 
   block(name="content")
-    h2 {{ item.reportType }}
+    h2 {{ item.reportType.title }}
 
     h1 {{ item.title }}
 
