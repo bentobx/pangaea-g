@@ -1,0 +1,24 @@
+extends(src="../templates/_layout.sgr")
+  block(name="title")
+    title Pangaea Consultants
+
+
+  block(name="content")
+
+    // pre {{ JSON.stringify(dato.contact_page, null, 2) }}
+
+    div.horizontal.center.space-around.top
+
+      h1 {{ item.title }}
+
+      div.intro {{ md(item.intro) }}
+
+      each(loop="location in item.locations")
+        h3 {{ location.name }}
+
+        p {{ md(location.address) }}
+
+        if(condition='{{ location.phoneNumber !== null }}')
+          p {{ location.phoneNumber }}
+
+        p: a(href="mailto:{{location.email}}") {{ location.email }}

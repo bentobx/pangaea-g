@@ -1,6 +1,6 @@
 if(condition='dato')
   ul.article-list
-    each(loop="article in dato.article ")
+    each(loop="article in dato.article")
       li.article
         .publish-date {{ df(article.publishDate, "dddd, mmmm d, yyyy") }}
         .author

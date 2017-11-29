@@ -6,6 +6,13 @@ extends(src="../templates/_layout.sgr")
     include(src='/includes/_nav.sgr')
 
   block(name="content")
+    if(condition="{{ item.title !== null }}")
+      h1 {{ item.title }}
+
+    if(condition="{{ item.intro !== null }}")
+      p {{ md(item.intro) }}
+
+    
 
     if(condition="{{ item.toc == true }} ")
       div {{ item.toc_content }}

@@ -77,6 +77,12 @@ const datos = new SpikeDatoCMS({
       output: (page) => { return `/index.html` }
     }
   },
+  { name: 'contact_page',
+    template: {
+      path: 'views/_contact_page.sgr',
+      output: (page) => { return `/contact.html` }
+    }
+  },
   { name: 'page',
     json: 'pages.json',
     template: {

@@ -4,6 +4,9 @@ extends(src="../templates/_layout.sgr")
 
 
   block(name="content")
+
+    // pre {{ JSON.stringify(dato.contact_page, null, 2) }}
+
     div.horizontal.center.space-around.top
       div.banner {{ md(item.bannerText) }}
       h1 {{ pageId }}
