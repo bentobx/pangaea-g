@@ -1,6 +1,8 @@
-@import "colors.sss"
+/*@import "colors.sss"*/
 @import "typography.sss"
-
+:root
+  @custom-media --sm-viewport (max-width:750px)
+  @custom-media --md-viewport (min-width:750px)
 
 /* NESTING:         */
 /* @nest & selector */
@@ -11,8 +13,8 @@
 /* & selector       */
 /*   is: cool       */
 
-
-
+.box
+  padding: 1rem
 
 .sidebar
   grid-area: sidebar
@@ -23,37 +25,73 @@
 .header
   grid-area: header
   display: flex
+  flex-flow: row wrap
+
+  @nest & .logo
+    flex: 1
+    @media only screen and (--sm-viewport)
+      flex: 0 0 100%
 
   @nest & #navbar
-    display: flex
     justify-content: flex-end
-    flex: 2
+    flex: 1
+    align-items: center
+
+    @nest & ul
+      text-align: right
+
+      @media only screen and (--sm-viewport)
+        padding: 0
+        margin: 0
+        text-align: left
+        @nest & a
+          display: block
+
+    @nest & a
+      line-height: 3rem
+      text-decoration: none
+
+      &.current
+        border-bottom: solid 2px #000
 
     @nest & li
-      display: flex
+      padding: 1rem
+      list-style: none
+      display: inline
+
+      @media only screen and (--sm-viewport)
+        border-bottom: solid 1px #eee
+        line-height: 2rem
+        list-style: none
+        margin: 0 0 .4rem 0
+        padding: 0
+        display: block
 
 .footer
   grid-area: footer
 
-#_home_page
-  @nest & .wrapper
-    grid-template-areas:
-      "header header header"
-      "content content content"
-      "footer footer footer"
+@media only screen and (--md-viewport)
+  #_home_page
+    @nest & .wrapper
+      grid-template-areas:
+        "header header header"
+        "content content content"
+        "footer footer footer"
+
 .wrapper
   display: grid
-  grid-gap: 1rem
-  grid-template-columns: 25% 1fr
+  grid-gap: 1em
   grid-template-areas:
-    "header header header"
-    "sidebar content content"
-    "footer footer footer"
-  background-color: #fff
-  color: #444
+    "header"
+    "sidebar"
+    "content"
+    "footer"
 
-.box
-  color: #fff
-  border-radius: 5px
-  padding: 10px
-  font-size: 150%
+@media only screen and (--md-viewport)
+  .wrapper
+    grid-template-columns: 230px 1fr
+    grid-template-areas:
+      "header header"
+      "sidebar content"
+      "footer footer"
+

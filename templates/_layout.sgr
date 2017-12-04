@@ -19,11 +19,11 @@ html
           block(name="nav")
             #navbar
               ul
-                li: a(href="/") Home
-                li: a(href="/about") About
-                li: a(href="/services") Services
-                li: a(href="/blog") Blog
-                li: a(href="/contact") Contact
+                li: a(class="{{ pageId === '_home_page' ? 'current' : '' }}" href="/") Home
+                li: a(class="{{ item.slug === 'about' ? 'current' : ''  }}" href="/about") About
+                li: a(class="{{ item.slug === 'services' ? 'current' : ''  }}" href="/services") Services
+                li: a(class="{{ item.slug === 'blog' ? 'current' : ''  }}" href="/blog") Blog
+                li: a(class="{{ pageId === '_contact_page' ? 'current' : ''  }}" href="/contact") Contact
 
       .box.content
         block(name="content")
