@@ -5,6 +5,7 @@
   @custom-media --md-viewport (min-width:750px)
 
   --color-primary: #007AFF
+  --color-blue: #1F4292
 
 /* NESTING:         */
 /* @nest & selector */
@@ -82,6 +83,16 @@
     background-repeat: no-repeat
     background-size: contain
     background-position: right
+    text-align: center
+    & h2, & h2 strong
+      color: var(--color-blue)
+      font-size: 2.3rem
+    & p
+      font-size: 1.7rem
+  & .columns
+    & h3
+      color: var(--color-blue)
+
   @nest & #featured-quote
     background-color: #1F4292
     padding: 1.5rem 0
