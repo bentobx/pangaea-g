@@ -4,8 +4,8 @@ extends(src="../templates/_layout.sgr")
 
   block(name="content")
 
-    div.horizontal.center.space-around.top
-      div.banner {{ md(item.bannerText) }}
+
+    div.banner(style="background-image: url('//{{ dato._meta.imgixHost + item.bannerImage.path }}')") {{ md(item.bannerText) }}
 
     div.columns
       div {{ md(item.column1) }}

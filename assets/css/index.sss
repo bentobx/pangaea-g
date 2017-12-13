@@ -77,6 +77,25 @@
 .footer
   grid-area: footer
 
+#_home_page
+  @nest & .banner
+    background-repeat: no-repeat
+    background-size: contain
+    background-position: right
+  @nest & #featured-quote
+    background-color: #1F4292
+    padding: 1.5rem 0
+    & p
+      color: color(#1F4292 lightness(90%))
+      font-size: 1.5rem
+    & .attribution
+      color: color(#1F4292 lightness(75%))
+      font-size: 1.25rem
+      text-align: right
+
+
+
+
 @media only screen and (--md-viewport)
   #_home_page
     @nest & .wrapper
@@ -86,7 +105,6 @@
         "content"
         "footer"
       & .columns
-        grid-row: row 2
         display: grid
         grid-gap: 2rem
         grid-template-columns: 1fr 1fr 1fr
@@ -145,7 +163,6 @@ h1
 
 @media only screen and (--md-viewport)
   .footer
-    grid-row: row 2
     display: grid
     grid-gap: 2rem
     grid-template-columns: 1fr 1fr 1fr
