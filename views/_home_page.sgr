@@ -7,7 +7,7 @@ extends(src="../templates/_layout.sgr")
     div.horizontal.center.space-around.top
       div.banner {{ md(item.bannerText) }}
 
-    div.horizontal
+    div.columns
       div {{ md(item.column1) }}
       div {{ md(item.column2) }}
       div {{ md(item.column3) }}

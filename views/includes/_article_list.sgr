@@ -2,11 +2,13 @@ if(condition='dato')
   ul.article-list
     each(loop="article in dato.article")
       li.article
+        h3: a(href="/blog/{{ article.slug }}") {{ article.title }}
         .publish-date {{ df(article.publishDate, "dddd, mmmm d, yyyy") }}
-        .author
+        if(condition='article.authors.length !== 0')
+          .author
+          | by&nbsp;
           each(loop="author in article.authors")
             a(href="/profile/{{ author.slug }}") {{ author.name }}
 
-        h3: a(href="/blog/{{ article.slug }}") {{ article.title }}
         if(condition='{{ article.summary }} !== null')
           .summary {{ article.summary }}

@@ -85,9 +85,16 @@
         "header"
         "content"
         "footer"
+      & .columns
+        grid-row: row 2
+        display: grid
+        grid-gap: 2rem
+        grid-template-columns: 1fr 1fr 1fr
+
 
 .wrapper
   max-width: 1024px
+  margin: 0 auto
   display: grid
   grid-gap: 1em
   grid-template-areas:
@@ -128,7 +135,13 @@ h1
   display: flex
   flex-wrap: wrap
   @nest & .card
-    flex: 2
+    margin-bottom: 3rem
+    text-align: center
+    max-width: 33%
+    & img
+      max-width: 100%
+    & h2, & p
+      margin: 0
 
 @media only screen and (--md-viewport)
   .footer
@@ -153,6 +166,21 @@ h1
     & li
       margin: 0 0 1rem 0
 
+.article-list
+  list-style: none
+  margin: 0
+  padding: 0
+  @nest & li
+    margin-bottom: 2rem
+    padding-bottom: 2rem
+    border-bottom: solid 1px #ddd
+    & h3
+      font-weight: 900
+      margin: 0
+      & a
+        text-decoration: none
+        &:hover
+          text-decoration: underline
 
 
 

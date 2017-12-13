@@ -4,10 +4,6 @@ extends(src="../templates/_layout.sgr")
 
   block(name="content")
     h1 {{ item.name }}
-    ul#authorArticleList
-    if(condition='{{ item.credentials !== null }}')
-      p {{ item.credentials }}
-
     h2 {{ item.title }}
 
     img(src="//{{ dato._meta.imgixHost + item.image.path }}")
@@ -24,6 +20,14 @@ extends(src="../templates/_layout.sgr")
 
     if(condition='{{item.eMailAddress !== null }}')
       a(href="mailto:{{ item.eMailAddress }}") Email {{ item.name }}
+
+    h3 Articles by {{ item.name }}
+
+    ul#authorArticleList
+    if(condition='{{ item.credentials !== null }}')
+      p {{ item.credentials }}
+
+
 
   block(name="javascript")
     script.
