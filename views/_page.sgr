@@ -10,9 +10,10 @@ extends(src="../templates/_layout.sgr")
       h1 {{ item.title }}
 
     if(condition="{{ item.intro !== null }}")
-      p {{ md(item.intro) }}
+      .intro {{ md(item.intro) }}
 
-    
+    if(condition="{{ item.parentId !== null && (item.image !== null) }}")
+      .img: img(src="//{{ dato._meta.imgixHost + item.image.path }}")
 
     if(condition="{{ item.toc == true }} ")
       div {{ item.toc_content }}

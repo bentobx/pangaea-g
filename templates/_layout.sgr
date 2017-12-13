@@ -28,8 +28,9 @@ html
       .box.content
         block(name="content")
 
-      .box.sidebar
-        block(name="sidebar")
+      if(condition="pageId !== '_home_page'")
+        .box.sidebar
+          block(name="sidebar")
 
       .box.footer
         block(name="footer")

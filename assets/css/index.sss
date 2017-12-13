@@ -93,17 +93,13 @@
       font-size: 1.25rem
       text-align: right
 
-
-
-
 @media only screen and (--md-viewport)
   #_home_page
     @nest & .wrapper
       grid-template-columns: 100%
-      grid-template-areas:
-        "header"
-        "content"
-        "footer"
+      grid-template-areas: "header"
+                           "content"
+                           "footer"
       & .columns
         display: grid
         grid-gap: 2rem
@@ -199,5 +195,12 @@ h1
         &:hover
           text-decoration: underline
 
+.intro
+  & h2
+    font-weight: 900
+    margin: 0
+  & p
+    font-size: 1.25rem
+    margin-top: 0
 
 
