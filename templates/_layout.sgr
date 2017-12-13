@@ -33,30 +33,31 @@ html
 
       .box.footer
         block(name="footer")
-          .horizontal
-            .flex-1.events
-              h4 Events
-              if(condition="dato")
+          .events
+            h4 Events
+            if(condition="dato")
+              ul
                 each(loop="event, index in dato.event")
                   if(condition=" index < 3")
                     li: a(href="/events/{{ event.slug }}") {{ event.title }}
 
-            .flex-1.articles
-              h4 Articles
-              if(condition="dato")
+          .articles
+            h4 Articles
+            if(condition="dato")
+              ul
                 each(loop="article, index in dato.article")
                   if(condition=" index < 3")
                     li: a(href="/blog/{{ article.slug }}") {{ article.title }}
 
 
-            .flex-1.events
-              h4 Get in touch
-              p We know what keeps you up at night.
-              p: a(href="/contact") Let us help you achieve your goals.
+          .contact
+            h4 Get in touch
+            p We know what keeps you up at night.
+            p: a(href="/contact") Let us help you achieve your goals.
 
 
-          .copyright
-            p &copy; {{ df(new Date(), "yyyy")}} Pangaea Holdings Inc. / Pangaea Group
+        .copyright
+          p &copy; {{ df(new Date(), "yyyy")}} Pangaea Holdings Inc. / Pangaea Group
 
     block(name="javascript")
         script(src="/js/main.js" defer)

@@ -4,6 +4,8 @@
   @custom-media --sm-viewport (max-width:750px)
   @custom-media --md-viewport (min-width:750px)
 
+  --color-primary: #007AFF
+
 /* NESTING:         */
 /* @nest & selector */
 /*   is: cool       */
@@ -28,22 +30,27 @@
   flex-flow: row wrap
 
   @nest & .logo
-    flex: 1
+    /* flex: 1 */
     @media only screen and (--sm-viewport)
       flex: 0 0 100%
 
   @nest & #navbar
     justify-content: flex-end
     flex: 1
+    display: flex
     align-items: center
 
     @nest & ul
       text-align: right
+      margin: 0
+      padding: 0
 
       @media only screen and (--sm-viewport)
         padding: 0
         margin: 0
         text-align: left
+        display: block
+        width: 100%
         @nest & a
           display: block
 
@@ -55,7 +62,7 @@
         border-bottom: solid 2px #000
 
     @nest & li
-      padding: 1rem
+      padding: 0 1rem
       list-style: none
       display: inline
 
@@ -73,12 +80,14 @@
 @media only screen and (--md-viewport)
   #_home_page
     @nest & .wrapper
+      grid-template-columns: 100%
       grid-template-areas:
-        "header header header"
-        "content content content"
-        "footer footer footer"
+        "header"
+        "content"
+        "footer"
 
 .wrapper
+  max-width: 1024px
   display: grid
   grid-gap: 1em
   grid-template-areas:
@@ -89,9 +98,61 @@
 
 @media only screen and (--md-viewport)
   .wrapper
+    max-width: 1024px
     grid-template-columns: 230px 1fr
     grid-template-areas:
       "header header"
       "sidebar content"
       "footer footer"
+
+#sidebar-nav
+  display: block
+  list-style: none
+  margin: 0
+  padding: 0
+  text-align: right
+  @nest & li
+    line-height: 2.4rem
+    & a
+      font-weight: 900
+      text-decoration: none
+
+@media only screen and (--sm-viewport)
+  #sidebar-nav
+    text-align: left
+
+h1
+  margin-top: 0
+
+.people-container
+  display: flex
+  flex-wrap: wrap
+  @nest & .card
+    flex: 2
+
+@media only screen and (--md-viewport)
+  .footer
+    grid-row: row 2
+    display: grid
+    grid-gap: 2rem
+    grid-template-columns: 1fr 1fr 1fr
+
+.footer
+  @nest & h4
+    color: var(--color-primary)
+    margin: 0
+
+  @nest & .copyright
+    grid-column: span 3
+    text-align: center
+
+  @nest & ul
+    margin: 0
+    padding: 0
+    list-style: none
+    & li
+      margin: 0 0 1rem 0
+
+
+
 

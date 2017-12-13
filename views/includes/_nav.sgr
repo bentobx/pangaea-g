@@ -12,7 +12,7 @@ if(condition="{{item.slug === 'blog'}}")
 else
   ul#sidebar-nav
     each(loop="page, i in dato.page")
-      //  find all pages with the same parentId as this item's parentID
+      // //  find all pages with the same parentId as this item's parentID
       if(condition="{{ page.parentId !== null && item.parentId !== null && (page.parentId.id == item.parentId.id) }}")
         li: a(href="/{{ page.parentId.slug }}/{{ page.slug }}") {{ page.title }}
 

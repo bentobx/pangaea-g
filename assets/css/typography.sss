@@ -1,5 +1,5 @@
 @import 'colors.sss'
-@import url('https://fonts.googleapis.com/css?family=Roboto')
+@import url('https://fonts.googleapis.com/css?family=Barlow:400,400i,700')
 
 :root
   --display-start-font-size: 24px
@@ -7,6 +7,7 @@
   --display-3-font-size: calc(var(--display-start-font-size) * 1.64)
   --display-2-font-size: calc(var(--display-start-font-size) * 1.32)
   --display-1-font-size: var(--display-start-font-size)
+  --body-font-family: 'Barlow', sans-serif
 
 h1, h2, h3, h4, h5, h6
   font-weight: normal
@@ -16,10 +17,10 @@ p, div
   font-size: 16px
 
 div
-  font-family: 'Roboto', sans-serif
+  font-family: var(--body-font-family)
 
 p
-  font-family: 'Roboto', sans-serif
+  font-family: var(--body-font-family)
 
 body *
   line-height: 1.5em
@@ -30,7 +31,7 @@ code, kbd, pre, samp
   font-size: 14px
 
 *[class^='display-']
-  font-family: 'Roboto', serif
+  font-family: var(--body-font-family)
   letter-spacing: 0.01em
 
 .display-4
@@ -46,7 +47,7 @@ code, kbd, pre, samp
   font-size: var(--display-1-font-size)
 
 .headline, .title, .subheading, .body-2, .caption, .label
-  font-family: 'Roboto', sans-serif
+  font-family: var(--body-font-family)
 
 .headline, .title
   padding-bottom: 12px

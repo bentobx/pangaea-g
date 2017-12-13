@@ -7,7 +7,7 @@
   },
   "bugs": "",
   "dependencies": {
-    "@std/esm": "^0.16.0",
+    "@std/esm": "^0.18.0",
     "dateformat": "^3.0.2",
     "dotenv": "^4.0.0",
     "format-num": "^1.0.0",
@@ -27,16 +27,16 @@
     "spike-collections": "git+https://github.com/jennie/spike-collections.git",
     "spike-css-standards": "^3.0.0",
     "spike-datocms": "^2.2.2",
-    "spike-js-standards": "^2.0.1",
+    "spike-js-standards": "^2.0.2",
     "spike-page-id": "^1.0.0",
     "spike-records": "^2.2.0",
-    "stripe": "^5.3.0",
+    "stripe": "^5.4.0",
     "sugarml": "^0.6.0",
     "sugarss": "^1.0.1",
-    "webpack": "^3.8.1"
+    "webpack": "^3.10.0"
   },
   "devDependencies": {
-    "ava": "^0.23.0",
+    "ava": "^0.24.0",
     "postcss-nesting": "^4.2.1",
     "postcss-style-guide": "^0.14.0",
     "snazzy": "^7.0.0",
