@@ -10,10 +10,11 @@ extends(src="../templates/_layout.sgr")
       each(loop="date in item.dates")
         li
           p.day {{ df(date.startDatetime, "dddd")}}
-          
+
           p.day {{ date.startDatetime }}
+          p.day {{ df(date.startDatetime, "h hh H HH o") }}
           p.date {{ df(date.startDatetime, "mmmm d, yyyy")}}
-          p.time {{ df(date.startDatetime, "h:MM TT")}} – {{ df(date.endDatetime, "h:MM TT")}}
+          p.time {{ df(date.startDatetime, "h:MM tt")}} – {{ df(date.endDatetime, "h:MM TT")}}
 
     if(condition='{{item.tickets !== null }}')
       each(loop="ticket in item.tickets")
