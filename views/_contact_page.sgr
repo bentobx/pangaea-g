@@ -2,7 +2,6 @@ extends(src="../templates/_layout.sgr")
   block(name="title")
     title Pangaea Consultants
 
-
   block(name="content")
 
     // pre {{ JSON.stringify(dato.contact_page, null, 2) }}
@@ -23,8 +22,6 @@ extends(src="../templates/_layout.sgr")
               p {{ location.phoneNumber }}
 
             p: a(href="mailto:{{location.email}}") {{ location.email }}
-
-
 
         .mailing-list.column
           // Begin MailChimp Signup Form

@@ -1,7 +1,9 @@
 if(condition='dato')
   ul.article-list
     each(loop="article in dato.article")
-      li.article
+      // li {{ df(article.publishDate, "dddd, mmmm d, yyyy") }} • {{ df(article.updatedAt, "dddd, mmmm d, yyyy") }}
+
+      li.article(data-publishDate="{{ article.publishDate }}")
         h3: a(href="/blog/{{ article.slug }}") {{ article.title }}
         .publish-date {{ df(article.publishDate, "dddd, mmmm d, yyyy") }}
         if(condition='article.authors.length !== 0')
@@ -12,4 +14,3 @@ if(condition='dato')
 
         if(condition='{{ article.summary }} !== null')
           .summary {{ article.summary }}
-

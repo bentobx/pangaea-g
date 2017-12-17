@@ -20,9 +20,25 @@ html
             #navbar
               ul
                 li: a(class="{{ pageId === '_home_page' ? 'current' : '' }}" href="/") Home
-                li: a(class="{{ item.slug === 'about' ? 'current' : ''  }}" href="/about") About
-                li: a(class="{{ item.slug === 'services' ? 'current' : ''  }}" href="/services") Services
-                li: a(class="{{ item.slug === 'blog' ? 'current' : ''  }}" href="/blog") Blog
+
+                // About section
+                if(condition='{{ item.parentId !== null && item.parentId !== undefined }}')
+                  li: a(class=" {{ item.parentId.slug === 'about' ? 'current' : '' }}" href="/about") About
+                else
+                  li: a(class=" {{ item.slug === 'about' ? 'current' : '' }}" href="/about") About
+
+                // Services section
+                if(condition='{{ item.parentId !== null && item.parentId !== undefined }}')
+                  li: a(class=" {{ item.parentId.slug === 'services' ? 'current' : '' }}" href="/services") Services
+                else
+                  li: a(class=" {{ item.slug === 'services' ? 'current' : '' }}" href="/services") Services
+
+                // Blog section
+                if(condition='{{ item.parentId !== null && item.parentId !== undefined }}')
+                  li: a(class=" {{ item.parentId.slug === 'blog' ? 'current' : '' }}" href="/blog") Blog
+                else
+                  li: a(class=" {{ item.slug === 'blog' ? 'current' : '' }}" href="/blog") Blog
+
                 li: a(class="{{ pageId === '_contact_page' ? 'current' : ''  }}" href="/contact") Contact
 
       .box.content

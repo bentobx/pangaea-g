@@ -63,6 +63,7 @@
 
       &.current
         border-bottom: solid 2px #000
+        font-weight: 900
 
     @nest & li
       padding: 0 1rem
@@ -152,9 +153,14 @@
     & a
       font-weight: 900
       text-decoration: none
-      &.current
-        color: var(--color-primary)
-        text-decoration: underline
+    &.current
+      color: var(--color-primary)
+      & a
+        /* text-decoration: underline */
+        border-bottom: solid 2px
+      &:before
+        content: "\2794"
+        padding-left: 24px
 
 @media only screen and (--sm-viewport)
   #sidebar-nav
