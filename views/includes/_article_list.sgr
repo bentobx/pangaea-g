@@ -12,3 +12,4 @@ if(condition='dato')
 
         if(condition='{{ article.summary }} !== null')
           .summary {{ article.summary }}
+

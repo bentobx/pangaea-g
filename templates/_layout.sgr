@@ -10,7 +10,7 @@ html
 
     link(rel="stylesheet" href="/css/index.css")
 
-  body(id="{{ typeof item.slug === 'undefined' ? pageId : item.slug }}" class="{{ pageId }}")
+  body(id="{{ pageId }}" class="{{ typeof item.slug === 'undefined' ? pageId : item.slug }}")
     .wrapper
       .box.header
         if(condition="dato")

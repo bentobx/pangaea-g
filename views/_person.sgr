@@ -3,10 +3,14 @@ extends(src="../templates/_layout.sgr")
       title {{ item.name }} - Pangaea Consultants
 
   block(name="content")
+    img(src="//{{ dato._meta.imgixHost + item.image.path }}")
+
     h1 {{ item.name }}
+    if(condition='{{ item.credentials !== null }}')
+      .credentials {{ item.credentials }}
+
     h2 {{ item.title }}
 
-    img(src="//{{ dato._meta.imgixHost + item.image.path }}")
 
     h3 Areas of Expertise
 
@@ -24,8 +28,7 @@ extends(src="../templates/_layout.sgr")
     h3 Articles by {{ item.name }}
 
     ul#authorArticleList
-    if(condition='{{ item.credentials !== null }}')
-      p {{ item.credentials }}
+
 
 
 

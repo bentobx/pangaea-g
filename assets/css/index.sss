@@ -1,5 +1,7 @@
 /*@import "colors.sss"*/
 @import "typography.sss"
+@import "forms.sss"
+
 :root
   @custom-media --sm-viewport (max-width:750px)
   @custom-media --md-viewport (min-width:750px)
@@ -146,10 +148,13 @@
   padding: 0
   text-align: right
   @nest & li
-    line-height: 2.4rem
+    margin: 0 0 24px 0
     & a
       font-weight: 900
       text-decoration: none
+      &.current
+        color: var(--color-primary)
+        text-decoration: underline
 
 @media only screen and (--sm-viewport)
   #sidebar-nav
@@ -158,17 +163,36 @@
 h1
   margin-top: 0
 
+
+#_person
+  & img
+    float: right
+  & h1
+    margin: 0
+
 .people-container
   display: flex
   flex-wrap: wrap
+
   @nest & .card
-    margin-bottom: 3rem
+    margin-bottom: 2rem
     text-align: center
-    max-width: 33%
+    max-width: 50%
     & img
       max-width: 100%
     & h2, & p
       margin: 0
+
+  @media only screen and (--md-viewport)
+
+    @nest & .card
+      margin-bottom: 3rem
+      text-align: center
+      max-width: 33%
+      & img
+        max-width: 100%
+      & h2, & p
+        margin: 0
 
 @media only screen and (--md-viewport)
   .footer
@@ -205,6 +229,7 @@ h1
       margin: 0
       & a
         text-decoration: none
+        color: var(--color-primary)
         &:hover
           text-decoration: underline
 
@@ -217,3 +242,32 @@ h1
     margin-top: 0
 
 
+
+#_contact_page
+  @nest & #mc_embed_signup
+    width: 100%
+
+    @media (--sm-viewport), (--md-viewport)
+      width: 300px
+
+  /* @nest & button, & .button
+    margin: 0 auto
+    text-align: center
+    display: block */
+
+.columns
+  display: block
+  @media (--md-viewport)
+    display: flex
+    justify-content: space-between
+
+.card.quote
+  background: var(--color-light-grey)
+  padding: 12px
+  margin: 24px 0
+  & p
+    font-size: 20px
+
+  @nest & .attribution
+    font-weight: 900
+    text-align: right

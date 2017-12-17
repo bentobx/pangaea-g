@@ -12,13 +12,42 @@ extends(src="../templates/_layout.sgr")
       h1 {{ item.title }}
 
       div.intro {{ md(item.intro) }}
+      .columns
+        .locations.column
+          each(loop="location in item.locations")
+            h3 {{ location.name }}
 
-      each(loop="location in item.locations")
-        h3 {{ location.name }}
+            p {{ md(location.address) }}
 
-        p {{ md(location.address) }}
+            if(condition='{{ location.phoneNumber !== null }}')
+              p {{ location.phoneNumber }}
 
-        if(condition='{{ location.phoneNumber !== null }}')
-          p {{ location.phoneNumber }}
+            p: a(href="mailto:{{location.email}}") {{ location.email }}
 
-        p: a(href="mailto:{{location.email}}") {{ location.email }}
+
+
+        .mailing-list.column
+          // Begin MailChimp Signup Form
+          #mc_embed_signup
+            form#mc-embedded-subscribe-form.validate(action='https://pangaea-consultants.us4.list-manage.com/subscribe/post?u=7ab3b29ff62651cb04d1db745&id=f1b3f8b508', method='post', name='mc-embedded-subscribe-form', target='_blank', novalidate='')
+              #mc_embed_signup_scroll
+                h2 Subscribe to our mailing list
+                .mc-field-group
+                  label(for='mce-EMAIL') Email Address
+                  input#mce-EMAIL.required.email(type='email', value='', name='EMAIL', placeholder='jane@smithco.com')
+                .mc-field-group
+                  label(for='mce-FNAME') First Name
+                  input#mce-FNAME(type='text', value='', name='FNAME', placeholder='Jane')
+                .mc-field-group
+                  label(for='mce-LNAME') Last Name
+                  input#mce-LNAME(type='text', value='', name='LNAME', placeholder='Smith')
+                .mc-field-group
+                  label(for='mce-MMERGE4') Company
+                  input#mce-MMERGE4(type='text', value='', name='MMERGE4', placeholder='Smith Co.')
+                #mce-responses.clear
+                  #mce-error-response.response(style='display:none')
+                  #mce-success-response.response(style='display:none')
+                // real people should not fill this in and expect good things - do not remove this or risk form bot signups
+                div(style='position: absolute; left: -5000px;', aria-hidden='true')
+                  input(type='text', name='b_7ab3b29ff62651cb04d1db745_f1b3f8b508', tabindex='-1', value='')
+                input#mc-embedded-subscribe.button(type='submit', value='Subscribe', name='subscribe')

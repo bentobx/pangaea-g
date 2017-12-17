@@ -1,1 +1,6 @@
-p lorem
+.quote-container
+  each(loop="quote in dato.quote")
+    .card.quote
+      blockquote
+        div {{ md(quote.quoteContent) }}
+        div.attribution {{ '– ' + quote.quoteAttribution }}

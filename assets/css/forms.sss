@@ -1,0 +1,26 @@
+@import 'colors.sss'
+@import url('https://fonts.googleapis.com/css?family=Barlow:400,400i,700')
+
+button, input, select, textarea
+  font-family : inherit
+  font-size   : 100%
+
+input, textarea, select, button
+  width : 300px
+  margin: 0
+  box-sizing: border-box
+
+button, .button
+  background: var(--color-primary)
+  border: none
+  color: var(--color-primary-contrast)
+  border-radius: 4px
+  line-height: 36px
+  position: relative
+
+#mc_embed_signup
+  @nest & label
+    display: block
+
+  @nest & .mc-field-group
+    margin: 0 0 12px 0
