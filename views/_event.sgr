@@ -10,6 +10,8 @@ extends(src="../templates/_layout.sgr")
       each(loop="date in item.dates")
         li
           p.day {{ df(date.startDatetime, "dddd")}}
+          
+          p.day {{ date.startDatetime }}
           p.date {{ df(date.startDatetime, "mmmm d, yyyy")}}
           p.time {{ df(date.startDatetime, "h:MM TT")}} – {{ df(date.endDatetime, "h:MM TT")}}
 
@@ -32,7 +34,7 @@ extends(src="../templates/_layout.sgr")
             data-currency="cad").
               console.log('hello')
           input(type="hidden" name="amount" value="{{ Math.round(ticket.total * 100) }}")
-          
+
 
   block(name="content")
     h1 {{ item.title }}
