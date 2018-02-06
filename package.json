@@ -7,9 +7,9 @@
   },
   "bugs": "",
   "dependencies": {
-    "@std/esm": "^0.18.0",
+    "@std/esm": "^0.20.0",
     "dateformat": "^3.0.2",
-    "dotenv": "^4.0.0",
+    "dotenv": "^5.0.0",
     "format-num": "^1.0.0",
     "markdown-it": "^8.4.0",
     "markdown-it-attrs": "^1.2.0",
@@ -18,7 +18,7 @@
     "markdown-it-sup": "^1.0.0",
     "markdown-it-toc-and-anchor": "^4.1.2",
     "reshape": "^0.4.1",
-    "reshape-content": "^0.2.0",
+    "reshape-content": "^0.3.0",
     "reshape-expressions": "^0.1.5",
     "reshape-layouts": "^1.0.0",
     "reshape-markdown": "^1.1.1",
@@ -36,7 +36,7 @@
     "webpack": "^3.10.0"
   },
   "devDependencies": {
-    "ava": "^0.24.0",
+    "ava": "^0.25.0",
     "postcss-nesting": "^4.2.1",
     "postcss-style-guide": "^0.14.0",
     "snazzy": "^7.0.0",
