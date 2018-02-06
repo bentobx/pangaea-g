@@ -67,12 +67,13 @@ const datos = new SpikeDatoCMS({
       if (data.dates) {
         const dates = data.dates
         dates.forEach(function(date, index) {
-          console.log('original: ' + date.startDatetime)
-          let startDatetime = new Date(date.startDatetime)
-          let endDatetime = new Date(date.endDatetime)
-          data.startDatetime = new Date(date.startDatetime)
-          data.endDatetime = new Date(date.endDatetime)
-          console.log('start: ' + startDatetime + '/// end: ' + endDatetime)
+          console.log(date)
+          // console.log('original: ' + date.startDatetime)
+          // let startDatetime = new Date(date.startDatetime)
+          // let endDatetime = new Date(date.endDatetime)
+          // data.startDatetime = new Date(date.startDatetime)
+          // data.endDatetime = new Date(date.endDatetime)
+          // console.log('start: ' + startDatetime + '/// end: ' + endDatetime)
         })
       }
       return data
