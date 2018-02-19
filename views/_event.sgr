@@ -11,8 +11,8 @@ extends(src="../templates/_layout.sgr")
         li
           p.day {{ df(date.startDatetime, "dddd")}}
 
-          p.day {{ date.startDatetime }}
-          p.day {{ df(date.startDatetime, "h hh H HH o") }}
+          // p.day {{ date.startDatetime }}
+          // p.day {{ df(date.startDatetime, "h hh H HH o") }}
           p.date {{ df(date.startDatetime, "mmmm d, yyyy")}}
           p.time {{ df(date.startDatetime, "h:MM tt")}} – {{ df(date.endDatetime, "h:MM TT")}}
 

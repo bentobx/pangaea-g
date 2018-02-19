@@ -7,11 +7,11 @@
   },
   "bugs": "",
   "dependencies": {
-    "@std/esm": "^0.20.0",
-    "dateformat": "^3.0.2",
+    "@std/esm": "^0.22.0",
+    "dateformat": "^3.0.3",
     "dotenv": "^5.0.0",
     "format-num": "^1.0.0",
-    "markdown-it": "^8.4.0",
+    "markdown-it": "^8.4.1",
     "markdown-it-attrs": "^1.2.0",
     "markdown-it-container": "^2.0.0",
     "markdown-it-footnote": "^3.0.1",
@@ -33,14 +33,14 @@
     "stripe": "^5.4.0",
     "sugarml": "^0.6.0",
     "sugarss": "^1.0.1",
-    "webpack": "^3.10.0"
+    "webpack": "^3.11.0"
   },
   "devDependencies": {
     "ava": "^0.25.0",
     "postcss-nesting": "^4.2.1",
     "postcss-style-guide": "^0.14.0",
     "snazzy": "^7.0.0",
-    "standard": "^10.0.0"
+    "standard": "^11.0.0"
   },
   "main": "app.js",
   "private": true,
