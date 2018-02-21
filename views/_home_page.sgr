@@ -14,5 +14,5 @@ extends(src="../templates/_layout.sgr")
 
     div#featured-quote
       blockquote
-        div {{ md(item.featuredQuote.quoteContent) }}
+        // div {{ md(item.featuredQuote.quoteContent) }}
         div.attribution {{ '– ' + item.featuredQuote.quoteAttribution }}
