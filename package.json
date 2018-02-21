@@ -34,7 +34,8 @@
     "stripe": "^5.4.0",
     "sugarml": "^0.6.0",
     "sugarss": "^1.0.1",
-    "webpack": "^3.11.0"
+    "webpack": "^3.11.0",
+    "when": "^3.7.8"
   },
   "devDependencies": {
     "ava": "^0.25.0",
