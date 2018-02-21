@@ -98,7 +98,9 @@ const datos = new SpikeDatoCMS({
       output: (page) => {
         // TODO: this is a bit precarious – don't use if nesting goes more
         // than one level deep. Refactor.
-        if (page.parentId) { return `/${page.parentId.slug}/${page.slug}.html` }
+        if (page.parentId && page.parentId.slug) {
+          return `/${page.parentId.slug}/${page.slug}.html`
+        }
         else { return `/${page.slug}.html` }
       }
     },
