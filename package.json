@@ -10,6 +10,7 @@
     "@std/esm": "^0.22.0",
     "dateformat": "^3.0.3",
     "dotenv": "^5.0.0",
+    "es6bindall": "0.0.9",
     "format-num": "^1.0.0",
     "markdown-it": "^8.4.1",
     "markdown-it-attrs": "^1.2.0",
