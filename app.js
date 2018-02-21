@@ -1,10 +1,7 @@
 const env                     = require('dotenv').config()
 const path                    = require('path')
 const htmlStandards           = require('reshape-standard')
-
-// const styleGuide              = require('postcss-style-guide')
 const cssStandards            = require('spike-css-standards')
-
 const jsStandards             = require('spike-js-standards')
 const pageId                  = require('spike-page-id')
 const sugarml                 = require('sugarml')
@@ -24,7 +21,7 @@ const locals                  = { }
 
 const datos = new SpikeDatoCMS({
   addDataTo: locals,
-  token: process.env.dato_api_key,
+  token: 'a3505e8e47ad3adecac3d794326a0e',
   models: [
   { name: 'quote' },
   { name: 'person',
@@ -132,7 +129,6 @@ module.exports = {
   ignore: [ '**/_layout.sgr', '**/layout.sgr', '**/.*', 'readme.md', 'yarn.lock', 'custom_modules/**', 'views/includes/**' ],
   reshape: htmlStandards ({
     parser: sugarml,
-    // webpack: ctx,
     locals: (ctx) => { return Object.assign(locals,
       { pageId: pageId(ctx) },
       { df: df.bind(df) },
@@ -145,11 +141,6 @@ module.exports = {
   postcss: cssStandards({
     parser: sugarss,
     locals: { datos }
-    // ,
-    // appendPlugins: styleGuide({
-    //   project: 'Pangaea 2.0',
-    //   dest: 'public/styleguide/index.html'
-    // })
   }),
   babel: jsStandards(),
   plugins: [datos]
