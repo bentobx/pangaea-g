@@ -64,17 +64,6 @@ const datos = new SpikeDatoCMS({
           ticket.total = total
         })
       }
-      // if (data.dates) {
-      //   const dates = data.dates
-      //   dates.forEach(function(date, index) {
-      //     console.log('original:' + date.startDatetime)
-      //     let startDatetime = new Date(date.startDatetime)
-      //     let endDatetime = new Date(date.endDatetime)
-      //     data.startDatetime = new Date(date.startDatetime)
-      //     data.endDatetime = new Date(date.endDatetime)
-      //     console.log('start:' + startDatetime + 'end:' + endDatetime)
-      //   })
-      // }
       return data
     },
     template: {
@@ -113,7 +102,6 @@ const datos = new SpikeDatoCMS({
         const d = new Date(data.date)
         data.newdate = df(d, "mmmm yyyy")
       }
-      // add toc to the local {{ item }} if toc is true
       if (data.toc == true) {
         markdown.render(data.body, {
           tocCallback: function(tocMarkdown, tocArray, tocHtml) {
