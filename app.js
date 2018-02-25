@@ -24,7 +24,8 @@ const locals                  = { }
 
 const datos = new SpikeDatoCMS({
   addDataTo: locals,
-  token: process.env.dato_api_key,
+  // token: process.env.dato_api_key,
+  token: 'ceaee5eb8b63d1ea06683848f0bd84',
   models: [
   { name: 'quote' },
   { name: 'person',
