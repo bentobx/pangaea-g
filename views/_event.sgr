@@ -32,8 +32,6 @@ extends(src="../templates/_layout.sgr")
             data-description="{{ item.title }}"
             data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
             data-locale="auto"
-            data-currency="cad").
-              console.log('hello')
           input(type="hidden" name="amount" value="{{ Math.round(ticket.total * 100) }}")
 
 

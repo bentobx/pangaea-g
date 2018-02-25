@@ -9,6 +9,7 @@
   "dependencies": {
     "@std/esm": "^0.18.0",
     "dateformat": "^3.0.2",
+    "datocms-client": "^0.3.41",
     "dotenv": "^4.0.0",
     "format-num": "^1.0.0",
     "markdown-it": "^8.4.0",
