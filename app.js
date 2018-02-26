@@ -1,4 +1,4 @@
-const env                     = require('dotenv').config()
+require('dotenv').config({ silent: true })
 const path                    = require('path')
 const htmlStandards           = require('reshape-standard')
 
@@ -26,7 +26,8 @@ const datos = new SpikeDatoCMS({
   addDataTo: locals,
   token: process.env.dato_api_key,
   models: [
-  { name: 'quote' },
+  { name: 'quote',
+    json: 'quotes.json' },
   { name: 'person',
     template: {
       path: 'views/_person.sgr',
@@ -69,7 +70,8 @@ const datos = new SpikeDatoCMS({
     template: {
       path: 'views/_event.sgr',
       output: (event) => { return `events/${event.slug}.html` }
-    }
+    },
+    json: 'events.json'
   },
   { name: 'home_page',
     template: {
