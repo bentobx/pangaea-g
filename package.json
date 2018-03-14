@@ -7,46 +7,43 @@
   },
   "bugs": "",
   "dependencies": {
-    "@std/esm": "^0.22.0",
     "dateformat": "^3.0.3",
     "dotenv": "^5.0.0",
     "format-num": "^1.0.0",
-    "lodash.bindall": "^4.4.0",
-    "markdown-it": "^8.4.1",
-    "markdown-it-attrs": "^1.2.0",
+    "markdown-it-attrs": "^1.2.1",
     "markdown-it-container": "^2.0.0",
     "markdown-it-footnote": "^3.0.1",
     "markdown-it-sup": "^1.0.0",
     "markdown-it-toc-and-anchor": "^4.1.2",
-    "reshape": "^0.4.1",
+    "reshape": "^0.4.2",
     "reshape-content": "^0.3.0",
     "reshape-expressions": "^0.1.5",
     "reshape-layouts": "^1.0.0",
     "reshape-markdown": "^1.1.1",
-    "reshape-standard": "^3.1.1",
+    "reshape-standard": "^3.3.0",
     "spike": "^2.2.1",
-    "spike-collections": "git+https://github.com/jennie/spike-collections.git",
     "spike-css-standards": "^3.0.0",
     "spike-datocms": "^2.2.2",
     "spike-js-standards": "^2.0.2",
-    "spike-page-id": "^1.0.0",
-    "spike-records": "^2.2.0",
-    "stripe": "^5.5.0",
+    "spike-page-id": "^1.1.0",
     "sugarml": "^0.6.0",
-    "sugarss": "^1.0.1",
-    "webpack": "^3.11.0"
+    "sugarss": "^1.0.1"
   },
   "devDependencies": {
     "ava": "^0.25.0",
     "postcss-nesting": "^4.2.1",
-    "postcss-style-guide": "^0.14.0",
-    "snazzy": "^7.0.0",
+    "snazzy": "^7.1.1",
     "standard": "^11.0.0"
   },
   "main": "app.js",
   "private": true,
   "scripts": {
     "lint": "standard | snazzy",
-    "precommit": "npm run lint -s"
+    "precommit": "npm run lint -s",
+    "pretest": "npm run lint -s",
+    "test": "NODE_ENV=test ava",
+    "start": "spike watch",
+    "build": "spike compile",
+    "prod": "NODE_ENV=production spike compile -e production"
   }
 }
