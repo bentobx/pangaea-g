@@ -19,9 +19,8 @@ const markdownItTocAndAnchor = require('markdown-it-toc-and-anchor').default
 const markdownItAttrs = require('markdown-it-attrs')
 const markdownItContainer = require('markdown-it-container')
 const markdownItSup = require('markdown-it-sup')
-const markdown = new MarkdownIt()
-// .use(markdownItTocAndAnchor, { anchorLink: false, tocFirstLevel: 3
-// })
+const markdownTOC = new MarkdownIt().use(markdownItTocAndAnchor, { anchorLink: false, tocFirstLevel: 3 })
+const md = new MarkdownIt()
 
 const locals = { }
 
@@ -46,13 +45,6 @@ const datos = new SpikeDatoCMS({
         path: 'views/_article.sgr',
         output: (article) => { return `blog/${article.slug}.html` }
       },
-      transform: (data) => {
-        let datemod
-        datemod = new Date(data.publishDate)
-        console.log(datemod)
-
-        return data
-      },
       json: 'articles.json'
     },
     {
@@ -62,7 +54,7 @@ const datos = new SpikeDatoCMS({
         output: (report) => { return `reports/${report.reportType.slug}/${report.slug}.html` }
       },
       transform: (data) => {
-        markdown.render(data.body, {
+        markdownTOC.render(data.body, {
           tocCallback: function (tocMarkdown, tocArray, tocHtml) {
             data.toc_content = tocHtml
           }
@@ -125,13 +117,13 @@ const datos = new SpikeDatoCMS({
           const d = new Date(data.date)
           data.newdate = df(d, 'mmmm yyyy')
         }
-        // if (data.toc === true) {
-        //   markdown.render(data.body, {
-        //     tocCallback: function(tocMarkdown, tocArray, tocHtml) {
-        //       data.toc_content = tocHtml
-        //     }
-        //   })
-        // }
+        if (data.toc === true) {
+          markdownTOC.render(data.body, {
+            tocCallback: function(tocMarkdown, tocArray, tocHtml) {
+              data.toc_content = tocHtml
+            }
+          })
+        }
         return data
       }
     }
@@ -150,7 +142,7 @@ module.exports = {
       { pageId: pageId(ctx) },
       { df: df.bind(df) },
       { fn: fn.bind(fn) },
-      { md: markdown.render.bind(markdown) }
+      { md: md.render.bind(md) }
     ) },
     markdownPlugins: [ markdownItFootnote, markdownItAttrs, markdownItContainer, markdownItSup, markdownItTocAndAnchor ],
     retext: { quotes: false }
