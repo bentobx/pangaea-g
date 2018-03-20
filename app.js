@@ -19,8 +19,8 @@ const markdownItTocAndAnchor = require('markdown-it-toc-and-anchor').default
 const markdownItAttrs = require('markdown-it-attrs')
 const markdownItContainer = require('markdown-it-container')
 const markdownItSup = require('markdown-it-sup')
-// const markdown = new MarkdownIt()
-const markdown                = new MarkdownIt().use(markdownItTocAndAnchor, { anchorLink: false, tocFirstLevel: 3 })
+const markdown = new MarkdownIt()
+// const markdown                = new MarkdownIt().use(markdownItTocAndAnchor, { anchorLink: false, tocFirstLevel: 3 })
 
 const locals = { }
 
