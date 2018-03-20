@@ -26,6 +26,7 @@ extends(src="../templates/_layout.sgr")
 
     if(condition="{{ item.slug === 'blog' }}")
       include(src='includes/_article_list.sgr')
+      
 
     if(condition="{{ item.slug === 'testimonials' }}")
       include(src='includes/_quote_list.sgr')

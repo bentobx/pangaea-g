@@ -27,7 +27,8 @@
     "spike-js-standards": "^2.0.2",
     "spike-page-id": "^1.1.0",
     "sugarml": "^0.6.0",
-    "sugarss": "^1.0.1"
+    "sugarss": "^1.0.1",
+    "tinysort": "^2.3.6"
   },
   "devDependencies": {
     "ava": "^0.25.0",

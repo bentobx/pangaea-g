@@ -1,25 +1,25 @@
-if(condition="{{item.slug === 'blog'}}")
-  if(condition='dato')
-    h3 Archives
-    ul.article-list
-      each(loop="article, i in dato.article ")
-        if(condition="i < 10")
-          li.article
-            p
-              a(href="/blog/{{ article.slug }}") {{ article.title }}
-              small {{ df(article.publishDate, "mmmm d, yyyy") }}
+// if(condition="{{item.slug === 'blog'}}")
+//   if(condition='dato')
+//     h3 Archives
+//     ul.article-list
+//       each(loop="article, i in dato.article ")
+//         if(condition="i < 10")
+//           li.article
+//             p
+//               a(href="/blog/{{ article.slug }}") {{ article.title }}
+//               small {{ df(article.publishDate, "mmmm d, yyyy") }}
 
-else
-  ul#sidebar-nav
-    each(loop="page, i in dato.page")
-      // //  find all pages with the same parentId as this item's parentID
-      if(condition="{{ page.parentId !== null && item.parentId !== null && (page.parentId.id == item.parentId.id) }}")
-        li(class="{{ item.slug === page.slug ? 'current' : '' }}")
-          a(href="/{{ page.parentId.slug }}/{{ page.slug }}") {{ page.title }}
+// else
+ul#sidebar-nav
+  each(loop="page, i in dato.page")
+    // //  find all pages with the same parentId as this item's parentID
+    if(condition="{{ page.parentId !== null && item.parentId !== null && (page.parentId.id == item.parentId.id) }}")
+      li(class="{{ item.slug === page.slug ? 'current' : '' }}")
+        a(href="/{{ page.parentId.slug }}/{{ page.slug }}") {{ page.title }}
 
 
-      // OR, if this page does not have a parentID, find all pages with this item's ID as their parentID
-      else
-        if(condition="{{ page.parentId !== null && (page.parentId.id == item.id) }}")
-          li: a(href="/{{ page.parentId.slug }}/{{ page.slug }}") {{ page.title }}
+    // OR, if this page does not have a parentID, find all pages with this item's ID as their parentID
+    else
+      if(condition="{{ page.parentId !== null && (page.parentId.id == item.id) }}")
+        li: a(href="/{{ page.parentId.slug }}/{{ page.slug }}") {{ page.title }}
 

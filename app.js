@@ -15,12 +15,12 @@ const fn = require('format-num')
 const SpikeDatoCMS = require('spike-datocms')
 const MarkdownIt = require('markdown-it')
 const markdownitFootnote = require('markdown-it-footnote')
-// const markdownItTocAndAnchor = require('markdown-it-toc-and-anchor').default
+const markdownItTocAndAnchor = require('markdown-it-toc-and-anchor').default
 const markdownItAttrs = require('markdown-it-attrs')
 const markdownItContainer = require('markdown-it-container')
 const markdownItSup = require('markdown-it-sup')
-const markdown = new MarkdownIt()
-// const markdown                = new MarkdownIt().use(markdownItTocAndAnchor, { anchorLink: false, tocFirstLevel: 3 })
+// const markdown = new MarkdownIt()
+const markdown                = new MarkdownIt().use(markdownItTocAndAnchor, { anchorLink: false, tocFirstLevel: 3 })
 
 const locals = { }
 
@@ -44,6 +44,11 @@ const datos = new SpikeDatoCMS({
       template: {
         path: 'views/_article.sgr',
         output: (article) => { return `blog/${article.slug}.html` }
+      },
+      transform: (data) => {
+        console.log(data.publishDate)
+
+        return data
       },
       json: 'articles.json'
     },
@@ -133,6 +138,7 @@ const datos = new SpikeDatoCMS({
 module.exports = {
   devtool: 'source-map',
   matchers: { html: '*(**/)*.sgr', css: '*(**/)*.sss' },
+  vendor: 'assets/js/vendor/**',
   ignore: [ '**/_layout.sgr', '**/layout.sgr', '**/.*', 'readme.md', 'yarn.lock', 'custom_modules/**', 'views/includes/**' ],
   reshape: htmlStandards ({
     parser: sugarml,
