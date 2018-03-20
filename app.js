@@ -58,15 +58,15 @@ const datos = new SpikeDatoCMS({
         path: 'views/_report.sgr',
         output: (report) => { return `reports/${report.reportType.slug}/${report.slug}.html` }
       }
-      ,
-      transform: (data) => {
-        markdown.render(data.body, {
-          tocCallback: function (tocMarkdown, tocArray, tocHtml) {
-            data.toc_content = tocHtml
-          }
-        })
-        return data
-      }
+      // ,
+      // transform: (data) => {
+      //   markdown.render(data.body, {
+      //     tocCallback: function (tocMarkdown, tocArray, tocHtml) {
+      //       data.toc_content = tocHtml
+      //     }
+      //   })
+      //   return data
+      // }
     },
     {
       name: 'event',
