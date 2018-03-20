@@ -123,13 +123,13 @@ const datos = new SpikeDatoCMS({
           const d = new Date(data.date)
           data.newdate = df(d, 'mmmm yyyy')
         }
-        if (data.toc === true) {
-          markdown.render(data.body, {
-            tocCallback: function(tocMarkdown, tocArray, tocHtml) {
-              data.toc_content = tocHtml
-            }
-          })
-        }
+        // if (data.toc === true) {
+        //   markdown.render(data.body, {
+        //     tocCallback: function(tocMarkdown, tocArray, tocHtml) {
+        //       data.toc_content = tocHtml
+        //     }
+        //   })
+        // }
         return data
       }
     }
