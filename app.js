@@ -19,8 +19,9 @@ const markdownItTocAndAnchor = require('markdown-it-toc-and-anchor').default
 const markdownItAttrs = require('markdown-it-attrs')
 const markdownItContainer = require('markdown-it-container')
 const markdownItSup = require('markdown-it-sup')
-const markdown = new MarkdownIt().use(markdownItTocAndAnchor, { anchorLink: false, tocFirstLevel: 3
-})
+const markdown = new MarkdownIt()
+// .use(markdownItTocAndAnchor, { anchorLink: false, tocFirstLevel: 3
+// })
 
 const locals = { }
 
@@ -59,16 +60,15 @@ const datos = new SpikeDatoCMS({
       template: {
         path: 'views/_report.sgr',
         output: (report) => { return `reports/${report.reportType.slug}/${report.slug}.html` }
+      },
+      transform: (data) => {
+        markdown.render(data.body, {
+          tocCallback: function (tocMarkdown, tocArray, tocHtml) {
+            data.toc_content = tocHtml
+          }
+        })
+        return data
       }
-      // ,
-      // transform: (data) => {
-      //   markdown.render(data.body, {
-      //     tocCallback: function (tocMarkdown, tocArray, tocHtml) {
-      //       data.toc_content = tocHtml
-      //     }
-      //   })
-      //   return data
-      // }
     },
     {
       name: 'event',
