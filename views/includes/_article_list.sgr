@@ -1,20 +1,19 @@
-p Nothing
-// if(condition='dato')
-//   ul.article-list
-//     each(loop="article in dato.article")
-//       li.article(data-publishDate="{{ Date.parse(article.publishDate) }}")
-//         h3: a(href="/blog/{{ article.slug }}") {{ article.title }}
-//         .publish-date {{ df(article.publishDate, "dddd, mmmm d, yyyy") }}
-//         if(condition='article.authors.length !== 0')
-//           .author
-//           | by&nbsp;
-//           each(loop="author in article.authors")
-//             a(href="/profile/{{ author.slug }}") {{ author.name }}
-//
-//         if(condition='{{ article.summary }} !== null')
-//           .summary {{ article.summary }}
-//
-//   block(name="javascript")
-//     script(src="/js/vendor/tinysort.js")
-//     script.
-//       tinysort('.article-list li',{data:'publishdate', order:'desc'});
+if(condition='dato')
+  ul.article-list
+    each(loop="article in dato.article")
+      li.article(data-publishDate="{{ Date.parse(article.publishDate) }}")
+        h3: a(href="/blog/{{ article.slug }}") {{ article.title }}
+        .publish-date {{ df(article.publishDate, "dddd, mmmm d, yyyy") }}
+        if(condition='article.authors.length !== 0')
+          .author
+          | by&nbsp;
+          each(loop="author in article.authors")
+            a(href="/profile/{{ author.slug }}") {{ author.name }}
+
+        if(condition='{{ article.summary }} !== null')
+          .summary {{ article.summary }}
+
+  block(name="javascript")
+    script(src="/js/vendor/tinysort.js")
+    script.
+      tinysort('.article-list li',{data:'publishdate', order:'desc'});

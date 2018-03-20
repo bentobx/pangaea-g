@@ -57,16 +57,15 @@ const datos = new SpikeDatoCMS({
       template: {
         path: 'views/_report.sgr',
         output: (report) => { return `reports/${report.reportType.slug}/${report.slug}.html` }
+      },
+      transform: (data) => {
+        markdown.render(data.body, {
+          tocCallback: function (tocMarkdown, tocArray, tocHtml) {
+            data.toc_content = tocHtml
+          }
+        })
+        return data
       }
-      // ,
-      // transform: (data) => {
-      //   markdown.render(data.body, {
-      //     tocCallback: function (tocMarkdown, tocArray, tocHtml) {
-      //       data.toc_content = tocHtml
-      //     }
-      //   })
-      //   return data
-      // }
     },
     {
       name: 'event',
@@ -150,7 +149,7 @@ module.exports = {
       { fn: fn.bind(fn) },
       { md: markdown.render.bind(markdown) }
     ) },
-    // markdownPlugins: [ markdownitFootnote, markdownItAttrs, markdownItContainer, markdownItSup ],
+    markdownPlugins: [ markdownitFootnote, markdownItAttrs, markdownItContainer, markdownItSup ],
     retext: { quotes: false }
   }),
   postcss: cssStandards({

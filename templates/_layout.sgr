@@ -61,11 +61,11 @@ html
 
           .articles
             h4 Articles
-            // if(condition="dato")
-            //   ul
-            //     each(loop="article, index in dato.article")
-            //       if(condition=" index < 3")
-            //         li: a(href="/blog/{{ article.slug }}") {{ article.title }}
+            if(condition="dato")
+              ul
+                each(loop="article, index in dato.article")
+                  if(condition=" index < 3")
+                    li: a(href="/blog/{{ article.slug }}") {{ article.title }}
 
 
           .contact

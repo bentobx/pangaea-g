@@ -16,7 +16,8 @@ extends(src="../templates/_layout.sgr")
     // pre {{ JSON.stringify(item, null, 2) }}
 
 
-    div {{ item.toc_content }}
+    if(condition='{{ item.toc_content !== null }}')
+      div {{ item.toc_content }}
 
     each(loop="author in item.authors")
       div.byline
