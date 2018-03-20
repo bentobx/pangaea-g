@@ -15,12 +15,12 @@ const fn = require('format-num')
 const SpikeDatoCMS = require('spike-datocms')
 const MarkdownIt = require('markdown-it')
 const markdownitFootnote = require('markdown-it-footnote')
-// const markdownItTocAndAnchor = require('markdown-it-toc-and-anchor').default
+const markdownItTocAndAnchor = require('markdown-it-toc-and-anchor').default
 const markdownItAttrs = require('markdown-it-attrs')
 const markdownItContainer = require('markdown-it-container')
 const markdownItSup = require('markdown-it-sup')
-const markdown = new MarkdownIt()
-// const markdown                = new MarkdownIt().use(markdownItTocAndAnchor, { anchorLink: false, tocFirstLevel: 3 })
+// const markdown = new MarkdownIt()
+const markdown                = new MarkdownIt().use(markdownItTocAndAnchor, { anchorLink: false, tocFirstLevel: 3 })
 
 const locals = { }
 
@@ -58,15 +58,15 @@ const datos = new SpikeDatoCMS({
         path: 'views/_report.sgr',
         output: (report) => { return `reports/${report.reportType.slug}/${report.slug}.html` }
       }
-      // ,
-      // transform: (data) => {
-      //   markdown.render(data.body, {
-      //     tocCallback: function (tocMarkdown, tocArray, tocHtml) {
-      //       data.toc_content = tocHtml
-      //     }
-      //   })
-      //   return data
-      // }
+      ,
+      transform: (data) => {
+        markdown.render(data.body, {
+          tocCallback: function (tocMarkdown, tocArray, tocHtml) {
+            data.toc_content = tocHtml
+          }
+        })
+        return data
+      }
     },
     {
       name: 'event',
@@ -123,13 +123,13 @@ const datos = new SpikeDatoCMS({
           const d = new Date(data.date)
           data.newdate = df(d, 'mmmm yyyy')
         }
-        // if (data.toc === true) {
-        //   markdown.render(data.body, {
-        //     tocCallback: function(tocMarkdown, tocArray, tocHtml) {
-        //       data.toc_content = tocHtml
-        //     }
-        //   })
-        // }
+        if (data.toc === true) {
+          markdown.render(data.body, {
+            tocCallback: function(tocMarkdown, tocArray, tocHtml) {
+              data.toc_content = tocHtml
+            }
+          })
+        }
         return data
       }
     }
@@ -150,17 +150,12 @@ module.exports = {
       { fn: fn.bind(fn) },
       { md: markdown.render.bind(markdown) }
     ) },
-    markdownPlugins: [ markdownitFootnote, markdownItAttrs, markdownItContainer, markdownItSup ],
+    // markdownPlugins: [ markdownitFootnote, markdownItAttrs, markdownItContainer, markdownItSup ],
     retext: { quotes: false }
   }),
   postcss: cssStandards({
     parser: sugarss,
     locals: { datos }
-    // ,
-    // appendPlugins: styleGuide({
-    //   project: 'Pangaea 2.0',
-    //   dest: 'public/styleguide/index.html'
-    // })
   }),
   babel: jsStandards(),
   plugins: [datos]
