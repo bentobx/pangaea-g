@@ -16,4 +16,4 @@ extends(src="../templates/_layout.sgr")
           a(href="/profile/{{ author.slug }}") {{ author.name }},
           | &nbsp;{{ author.title }}
 
-    div {{ md(item.body) }}
+    // div {{ md(item.body) }}
