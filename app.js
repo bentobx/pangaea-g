@@ -46,6 +46,7 @@ const datos = new SpikeDatoCMS({
         output: (article) => { return `blog/${article.slug}.html` }
       },
       transform: (data) => {
+        let datemod
         datemod = new Date(data.publishDate)
         console.log(datemod)
 
@@ -58,7 +59,8 @@ const datos = new SpikeDatoCMS({
       template: {
         path: 'views/_report.sgr',
         output: (report) => { return `reports/${report.reportType.slug}/${report.slug}.html` }
-      },
+      }
+      // ,
       // transform: (data) => {
       //   markdown.render(data.body, {
       //     tocCallback: function (tocMarkdown, tocArray, tocHtml) {
