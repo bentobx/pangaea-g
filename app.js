@@ -16,7 +16,7 @@ const SpikeDatoCMS = require('spike-datocms')
 const MarkdownIt = require('markdown-it')
 const markdownItFootnote = require('markdown-it-footnote')
 const markdownItTocAndAnchor = require('markdown-it-toc-and-anchor').default
-const markdownItAttrs = require('markdown-it-attrs')
+// const markdownItAttrs = require('markdown-it-attrs')
 const markdownItContainer = require('markdown-it-container')
 const markdownItSup = require('markdown-it-sup')
 const markdownTOC = new MarkdownIt().use(markdownItTocAndAnchor, { anchorLink: false, tocFirstLevel: 3 })
@@ -144,7 +144,7 @@ module.exports = {
       { fn: fn.bind(fn) },
       { md: md.render.bind(md) }
     ) },
-    markdownPlugins: [ markdownItFootnote, markdownItAttrs, markdownItContainer, markdownItSup, markdownItTocAndAnchor ],
+    markdownPlugins: [ markdownItFootnote, markdownItContainer, markdownItSup, markdownItTocAndAnchor ],
     retext: { quotes: false }
   }),
   postcss: cssStandards({
