@@ -1,11 +1,6 @@
-require('dotenv').config({
-  silent: true
-})
+require('dotenv').config()
 const htmlStandards = require('reshape-standard')
-
-// const styleGuide = require('postcss-style-guide')
 const cssStandards = require('spike-css-standards')
-
 const jsStandards = require('spike-js-standards')
 const pageId = require('spike-page-id')
 const sugarml = require('sugarml')
@@ -16,7 +11,8 @@ const SpikeDatoCMS = require('spike-datocms')
 const MarkdownIt = require('markdown-it')
 const markdownItFootnote = require('markdown-it-footnote')
 const markdownItTocAndAnchor = require('markdown-it-toc-and-anchor').default
-// const markdownItAttrs = require('markdown-it-attrs')
+const markdownItAttrs = require('markdown-it-attrs')
+const markdownItContainer = require('markdown-it-container')
 const markdownItSup = require('markdown-it-sup')
 const markdownTOC = new MarkdownIt().use(markdownItTocAndAnchor, { anchorLink: false, tocFirstLevel: 3 })
 const md = new MarkdownIt()
@@ -102,8 +98,7 @@ const datos = new SpikeDatoCMS({
         output: (page) => {
           if (page.parentId) {
             return `/${page.parentId.slug}/${page.slug}.html`
-          }
-          else {
+          } else {
             return `/${page.slug}.html`
           }
         }
@@ -118,7 +113,7 @@ const datos = new SpikeDatoCMS({
         }
         if (data.toc === true) {
           markdownTOC.render(data.body, {
-            tocCallback: function(tocMarkdown, tocArray, tocHtml) {
+            tocCallback: function (tocMarkdown, tocArray, tocHtml) {
               data.toc_content = tocHtml
             }
           })
@@ -128,13 +123,12 @@ const datos = new SpikeDatoCMS({
     }
   ]
 })
-
 module.exports = {
   devtool: 'source-map',
   matchers: { html: '*(**/)*.sgr', css: '*(**/)*.sss' },
   vendor: 'assets/js/vendor/**',
   ignore: [ '**/_layout.sgr', '**/layout.sgr', '**/.*', 'readme.md', 'yarn.lock', 'custom_modules/**', 'views/includes/**' ],
-  reshape: htmlStandards ({
+  reshape: htmlStandards({
     parser: sugarml,
     // webpack: ctx,
     locals: (ctx) => { return Object.assign(locals,
@@ -142,8 +136,8 @@ module.exports = {
       { df: df.bind(df) },
       { fn: fn.bind(fn) },
       { md: md.render.bind(md) }
-    ) },
-    markdownPlugins: [ markdownItFootnote, markdownItSup, markdownItTocAndAnchor ],
+    )},
+    markdownPlugins: [ markdownItFootnote, markdownItAttrs, markdownItContainer, markdownItSup, markdownItTocAndAnchor ],
     retext: { quotes: false }
   }),
   postcss: cssStandards({
