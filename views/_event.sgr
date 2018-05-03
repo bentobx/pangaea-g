@@ -26,7 +26,7 @@ extends(src="../templates/_layout.sgr")
         form(action="https://pangaea-checkout.glitch.me/charge" method="POST" class="buy-ticket-form")
           script(
             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-key="pk_test_zi4yQH5XpDZAKCgXiRZSFmmn"
+            data-key="pk_live_GFf8UFUZlVbwr5Na7F5fYsQL"
             data-amount="{{ ticket.total * 100 }}"
             data-name="Pangaea Holdings, Inc."
             data-description="{{ item.title }}"
