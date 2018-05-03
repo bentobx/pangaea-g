@@ -14,7 +14,8 @@ extends(src="../templates/_layout.sgr")
           // p.day {{ date.startDatetime }}
           // p.day {{ df(date.startDatetime, "h hh H HH o") }}
           p.date {{ df(date.startDatetime, "mmmm d, yyyy")}}
-          p.time {{ df(date.startDatetime, "h:MM tt")}} – {{ df(date.endDatetime, "h:MM TT")}}
+          // p.time {{ df(date.startDatetime, "h:MM tt")}} – {{ df(date.endDatetime, "h:MM TT")}}
+          p.time 8:30 a.m. – 4:30 p.m.
 
     if(condition='{{item.tickets !== null }}')
       each(loop="ticket in item.tickets")
