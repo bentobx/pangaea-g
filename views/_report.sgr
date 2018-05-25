@@ -3,7 +3,6 @@ extends(src="../templates/_layout.sgr")
     title {{ item.title }} - Pangaea Consultants
 
   block(name="sidebar")
-    p Blog sidebar
 
   block(name="content")
     h2 {{ item.reportType.title }}
