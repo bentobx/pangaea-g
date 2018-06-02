@@ -9,14 +9,19 @@ const df = require('dateformat')
 const fn = require('format-num')
 const SpikeDatoCMS = require('spike-datocms')
 const MarkdownIt = require('markdown-it')
-const markdownItFootnote = require('markdown-it-footnote')
 const markdownItTocAndAnchor = require('markdown-it-toc-and-anchor').default
 const markdownItAttrs = require('markdown-it-attrs')
 const markdownItContainer = require('markdown-it-container')
 const markdownItSup = require('markdown-it-sup')
-const markdownTOC = new MarkdownIt().use(markdownItTocAndAnchor, { anchorLink: false, tocFirstLevel: 3 })
-const md = new MarkdownIt()
 
+const markdownItFootnote = require('markdown-it-footnote')
+
+const md = new MarkdownIt().use(markdownItFootnote).use(markdownItTocAndAnchor, {
+  tocFirstLevel: 3,
+  anchorLink: false
+})
+// this means all markdown on the site will use these plugins. may want to make a new
+// markdown parser for "special" pages like reports…
 const locals = { }
 
 const datos = new SpikeDatoCMS({
@@ -49,7 +54,7 @@ const datos = new SpikeDatoCMS({
         output: (report) => { return `reports/${report.reportType.slug}/${report.slug}.html` }
       },
       transform: (data) => {
-        markdownTOC.render(data.body, {
+        md.render(data.body, {
           tocCallback: function (tocMarkdown, tocArray, tocHtml) {
             data.toc_content = tocHtml
           }
@@ -104,6 +109,7 @@ const datos = new SpikeDatoCMS({
         }
       },
       transform: (data) => {
+
         if (data.parentId === null) {
           data.overview = true
         }
@@ -112,7 +118,7 @@ const datos = new SpikeDatoCMS({
           data.newdate = df(d, 'mmmm yyyy')
         }
         if (data.toc === true) {
-          markdownTOC.render(data.body, {
+          md.render(data.body, {
             tocCallback: function (tocMarkdown, tocArray, tocHtml) {
               data.toc_content = tocHtml
             }
@@ -125,19 +131,19 @@ const datos = new SpikeDatoCMS({
 })
 module.exports = {
   devtool: 'source-map',
-  matchers: { html: '*(**/)*.sgr', css: '*(**/)*.sss' },
+  matchers: { html: '*(**/)*.sgr', css: '*(**/)*.sss', js: '*(**/)*.js' },
   vendor: 'assets/js/vendor/**',
   ignore: [ '**/_layout.sgr', '**/layout.sgr', '**/.*', 'readme.md', 'yarn.lock', 'custom_modules/**', 'views/includes/**' ],
   reshape: htmlStandards({
     parser: sugarml,
     // webpack: ctx,
-    locals: (ctx) => { return Object.assign(locals,
-      { pageId: pageId(ctx) },
-      { df: df.bind(df) },
-      { fn: fn.bind(fn) },
-      { md: md.render.bind(md) }
+    locals: (ctx) => { return Object.assign(locals
+      , { pageId: pageId(ctx) }
+      , { df: df.bind(df) }
+      , { fn: fn.bind(fn) }
+      , { md: md.render.bind(md) }
     )},
-    markdownPlugins: [ markdownItFootnote, markdownItAttrs, markdownItContainer, markdownItSup, markdownItTocAndAnchor ],
+    markdownPlugins: [ [markdownItTocAndAnchor, { tocFirstLevel: 3 }], markdownItFootnote, markdownItAttrs, markdownItContainer, markdownItSup ],
     retext: { quotes: false }
   }),
   postcss: cssStandards({
