@@ -16,6 +16,7 @@ const markdownItSup = require('markdown-it-sup')
 
 const markdownItFootnote = require('markdown-it-footnote')
 
+
 const md = new MarkdownIt().use(markdownItFootnote).use(markdownItTocAndAnchor, {
   tocFirstLevel: 3,
   anchorLink: false
