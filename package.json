@@ -15,7 +15,7 @@
     "markdown-it-container": "^2.0.0",
     "markdown-it-footnote": "^3.0.1",
     "markdown-it-sup": "^1.0.0",
-    "markdown-it-toc-and-anchor": "^4.1.2",
+    "markdown-it-toc-and-anchor": "git+https://github.com/jennie/markdown-it-toc-and-anchor",
     "reshape": "^0.4.2",
     "reshape-content": "^0.3.0",
     "reshape-expressions": "^0.1.5",
@@ -34,7 +34,7 @@
     "ava": "^0.25.0",
     "postcss-nesting": "^4.2.1",
     "snazzy": "^7.1.1",
-    "standard": "^11.0.0"
+    "standard": "^11.0.1"
   },
   "main": "app.js",
   "private": true,
