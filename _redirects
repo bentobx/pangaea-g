@@ -1,2 +1,2 @@
-/testauth/* 200! Role=admin
+/testauth/* 200! Role=subscriber
 /testauth/ /contact 404
