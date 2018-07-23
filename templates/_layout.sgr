@@ -9,11 +9,13 @@ html
       title Pangaea Consultants
 
     link(rel="stylesheet" href="/css/index.css")
-
+    script(type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js")
   body(id="{{ pageId }}" class="{{ typeof item.slug === 'undefined' ? pageId : item.slug }}")
 
     .wrapper
       .box.header
+
+
         if(condition="dato")
           .logo: img(src="//{{ dato._meta.imgixHost + dato._meta.theme.logo.path }}")
 
@@ -76,6 +78,8 @@ html
 
         .copyright
           p &copy; {{ df(new Date(), "yyyy")}} Pangaea Holdings Inc. / Pangaea Group
+          p
+            div(data-netlify-identity-button)
 
     block(name="javascript")
         script(src="/js/main.js" defer)
