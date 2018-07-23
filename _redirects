@@ -1,2 +1,5 @@
 /testauth/ 200! Role=inside_trade_subscriber
 /testauth/	/contact	401!
+
+/testauth/* 200! Role=admin
+/testauth/ /contact 404
