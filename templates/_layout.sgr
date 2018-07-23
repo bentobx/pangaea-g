@@ -17,7 +17,8 @@ html
 
 
         if(condition="dato")
-          .logo: img(src="//{{ dato._meta.imgixHost + dato._meta.theme.logo.path }}")
+          .logo
+            include(src='/includes/logo.sgr')
 
           block(name="nav")
             #navbar
