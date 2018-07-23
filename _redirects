@@ -1,1 +1,2 @@
-/testauth/* 200! Role=Inside Trade Subscriber
+/testauth/* 200! Role="Inside Trade Subscriber"
+/testauth/*	/contact	401!
