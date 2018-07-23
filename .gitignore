@@ -3,4 +3,3 @@ node_modules
 public
 _cache
 .env
-/package-lock.json
