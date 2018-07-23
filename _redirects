@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 /testauth/* 200! Role=subscriber,admin,editor
 /testauth/* /contact 404
+=======
+/testauth/* 200! Role=subscriber
+/testauth/ /contact 404
+>>>>>>> 63ca8a2a62b1b471cbbf7b30757482d6ec548418
