@@ -3,7 +3,7 @@ extends(src="../templates/_layout.sgr")
       title {{ item.name }} - Pangaea Consultants
 
   block(name="content")
-    img(src="//{{ dato._meta.imgixHost + item.image.path }}")
+    img(src="//{{ dato._meta.imgixHost + item.image.path }}?fit=crop&max-w=200&max-h=200")
 
     h1 {{ item.name }}
     if(condition='{{ item.credentials !== null }}')

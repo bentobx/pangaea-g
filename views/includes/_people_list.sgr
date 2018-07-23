@@ -1,7 +1,7 @@
 .people-container
   each(loop="person in dato.person")
     .card.person
-      figure.headshot: img(src="//{{ dato._meta.imgixHost + person.image.path }}")
+      figure.headshot: img(src="//{{ dato._meta.imgixHost + person.image.path }}?fit=crop&max-w=200&max-h=200")
       if(condition="person.credentials")
         h2
           a(href="/profile/{{ person.slug }}") {{ person.name }},
