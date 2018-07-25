@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+
+    block(name="title")
+      title Pangaea Consultants
+
+    link(rel="stylesheet" href="/css/index.css")
+    script(type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js")
+  body
+
+    .wrapper
+      .box.header
+        h1 I am an article.
+
+        p You should not be able to see this text unless you are logged in.
+
+        .copyright
+          p &copy; {{ df(new Date(), "yyyy")}} Pangaea Holdings Inc. / Pangaea Group
+          p
+            div(data-netlify-identity-button)
+
+    block(name="javascript")
+        script(src="/js/main.js" defer)
