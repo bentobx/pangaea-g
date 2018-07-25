@@ -1,2 +1,2 @@
-/admin/*			200!	Role=admin
-/admin/*	/login	401!
+/admin/*			200!	Role=subscriber
+/admin/*	/contact	401!
