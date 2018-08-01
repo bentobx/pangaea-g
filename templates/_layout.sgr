@@ -9,6 +9,7 @@ html
       title Pangaea Consultants
 
     link(rel="stylesheet" href="/css/index.css")
+    script(type="text/javascript" src="https://cdn.polyfill.io/v2/polyfill.js?features=default,fetch")
     script(type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js")
   body(id="{{ pageId }}" class="{{ typeof item.slug === 'undefined' ? pageId : item.slug }}")
 
