@@ -1,0 +1,56 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+
+    block(name="title")
+      title Pangaea Consultants
+
+    link(rel="stylesheet" href="/css/index.css")
+    script(type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js")
+  body(id="login")
+
+    .wrapper
+      .box.header
+
+
+      .box.content
+        block(name="content")
+
+
+      .box.footer
+        block(name="footer")
+
+          .copyright
+            p &copy; {{ df(new Date(), "yyyy")}} Pangaea Holdings Inc. / Pangaea Group
+            p
+              div(data-netlify-identity-button)
+
+    block(name="javascript")
+      script.
+        if (window.netlifyIdentity) {
+          window.netlifyIdentity.on("init", user => {
+            if (!user) {
+              window.netlifyIdentity.on("login", () => {
+                document.location.href = "/admin/";
+              });
+            }
+          });
+        }
+        // document.onload = function() {
+        //   showLogin()
+        // }
+        // function showLogin() {
+        //   if (!netlifyIdentity.currentUser()) {
+        //     netlifyIdentity.open();
+        //   }
+        //   netlifyIdentity.on('login', function() {
+        //     location.href = '/contact';
+        //     return
+        //   })
+        //   netlifyIdentity.on('logout', function() {
+        //     location.href = '/';
+        //   })
+        // }

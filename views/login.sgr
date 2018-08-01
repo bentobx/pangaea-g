@@ -1,0 +1,10 @@
+extends(src="../templates/_login-layout.sgr")
+  block(name="title")
+    title Login - Pangaea Consultants
+
+  block(name="content")
+
+    div(data-netlify-identity-button)
+
+  block(name="footer")
+    

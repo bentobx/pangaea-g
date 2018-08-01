@@ -1,14 +1,7 @@
-/admin/*			200!	Role=subscriber
-/admin/*	/contact	401!
-
 # Inside Trade
-/reports/inside-trade/*			200!	Role=subscriber,inside-trade
-/reports/inside-trade/*	/contact	401!
+/reports/inside-trade/*			200!	Role=inside-trade
+/reports/inside-trade/*	/login?redirect=/reports/inside-trade:splat	401!
 
-# Inside Trade
-/reports/inside-trade/*			200!	Role=subscriber,topics-and-trends
-/reports/inside-trade/*	/contact	401!
-
-# Inside Trade
-/reports/*			200!	Role=subscriber
-/reports/*	/contact	401!
+# Topics and Trends
+/reports/inside-trade/*			200!	Role=topics-and-trends
+/reports/inside-trade/*	/login	401!
