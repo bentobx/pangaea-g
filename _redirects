@@ -1,2 +1,14 @@
 /admin/*			200!	Role=subscriber
 /admin/*	/contact	401!
+
+# Inside Trade
+/reports/inside-trade/*			200!	Role=subscriber,inside-trade
+/reports/inside-trade/*	/contact	401!
+
+# Inside Trade
+/reports/inside-trade/*			200!	Role=subscriber,topics-and-trends
+/reports/inside-trade/*	/contact	401!
+
+# Inside Trade
+/reports/*			200!	Role=subscriber
+/reports/*	/contact	401!
