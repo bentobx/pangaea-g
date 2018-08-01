@@ -1,6 +1,6 @@
 # Inside Trade
 /reports/inside-trade/*			200!	Role=inside-trade
-/reports/inside-trade/*	/login?redirect=/reports/inside-trade:splat	401!
+/reports/inside-trade/*	/login	401!
 
 # Topics and Trends
 /reports/inside-trade/*			200!	Role=topics-and-trends
