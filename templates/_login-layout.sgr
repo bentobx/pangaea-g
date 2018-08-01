@@ -17,6 +17,7 @@ html
 
 
     block(name="javascript")
+      script(src="/js/main.js" defer)
       script.
         if (window.netlifyIdentity) {
           window.netlifyIdentity.on("init", user => {
@@ -26,9 +27,5 @@ html
                 document.location.href = window.location.href;
               });
             }
-            netlifyIdentity.on('logout', function() {
-              console.log('login outtt')
-              document.location.href = '/';
-            })
           });
         }
