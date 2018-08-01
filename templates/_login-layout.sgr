@@ -25,6 +25,7 @@ html
               netlifyIdentity.open();
               window.netlifyIdentity.on("login", () => {
                 document.location.href = location.protocol + '//' + location.host + location.pathname + location.hash;
+                location.reload();
               });
             }
           });
