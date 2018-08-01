@@ -33,24 +33,15 @@ html
         if (window.netlifyIdentity) {
           window.netlifyIdentity.on("init", user => {
             if (!user) {
+              netlifyIdentity.open();
               window.netlifyIdentity.on("login", () => {
                 document.location.href = window.location.href;
               });
             }
+            else {
+              netlifyIdentity.on('logout', function() {
+                document.location.href = '/';
+              })
+            }
           });
         }
-        // document.onload = function() {
-        //   showLogin()
-        // }
-        // function showLogin() {
-        //   if (!netlifyIdentity.currentUser()) {
-        //     netlifyIdentity.open();
-        //   }
-        //   netlifyIdentity.on('login', function() {
-        //     location.href = '/contact';
-        //     return
-        //   })
-        //   netlifyIdentity.on('logout', function() {
-        //     location.href = '/';
-        //   })
-        // }
