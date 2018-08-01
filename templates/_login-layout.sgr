@@ -26,10 +26,9 @@ html
                 document.location.href = window.location.href;
               });
             }
-            else {
-              netlifyIdentity.on('logout', function() {
-                document.location.href = '/';
-              })
-            }
+            netlifyIdentity.on('logout', function() {
+              console.log('login outtt')
+              document.location.href = '/';
+            })
           });
         }
