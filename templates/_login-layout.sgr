@@ -24,7 +24,7 @@ html
             if (!user) {
               netlifyIdentity.open();
               window.netlifyIdentity.on("login", () => {
-                document.location.href = window.location.href;
+                document.location.href = location.protocol + '//' + location.host + location.pathname + location.hash;
               });
             }
           });
