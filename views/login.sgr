@@ -5,6 +5,3 @@ extends(src="../templates/_login-layout.sgr")
   block(name="content")
 
     div(data-netlify-identity-button)
-
-  block(name="footer")
-    

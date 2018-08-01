@@ -12,21 +12,9 @@ html
     script(type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js")
   body(id="login")
 
-    .wrapper
-      .box.header
+    .content
+      block(name="content")
 
-
-      .box.content
-        block(name="content")
-
-
-      .box.footer
-        block(name="footer")
-
-          .copyright
-            p &copy; {{ df(new Date(), "yyyy")}} Pangaea Holdings Inc. / Pangaea Group
-            p
-              div(data-netlify-identity-button)
 
     block(name="javascript")
       script.
