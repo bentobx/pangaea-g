@@ -3,8 +3,8 @@
 /reports/inside-trade/*	/login	401!
 
 # Topics and Trends
-/reports/inside-trade/*			200!	Role=topics-and-trends
-/reports/inside-trade/*	/login	401!
+/reports/topics-and-trends/*			200!	Role=topics-and-trends
+/reports/topics-and-trends/*	/login	401!
 
 # Current MPiC
 /mpic   /events/marketing-pharmaceuticals-in-canada-fall-2018
