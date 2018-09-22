@@ -80,7 +80,7 @@ html
 
         .copyright
           p &copy; {{ df(new Date(), "yyyy")}} Pangaea Holdings Inc. / Pangaea Group
-          div(data-netlify-identity-button)
+          
 
     block(name="javascript")
       script(src="/js/main.js" defer)
