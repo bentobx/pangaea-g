@@ -84,15 +84,4 @@ html
 
     block(name="javascript")
       script(src="/js/main.js" defer)
-      script.
-        if (window.netlifyIdentity) {
-          window.netlifyIdentity.on("init", function (user) {
-            if (!user) {
-              netlifyIdentity.open();
-              window.netlifyIdentity.on("login", function () {
-                document.location.href = location.protocol + '//' + location.host + location.pathname + location.hash;
-                location.reload();
-              });
-            }
-          });
-        }
+
