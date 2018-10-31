@@ -47,6 +47,8 @@ extends(src="../templates/_layout.sgr")
                 console.log('this would be a good time to save this cookie');
                 console.log(jwt);
                 document.cookie = 'nf_jwt=' + jwt + '; path=/';
+                document.location.href = location.protocol + '//' + location.host + location.pathname + location.hash;
+                location.reload();
               }
               );
             }
