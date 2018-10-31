@@ -29,7 +29,7 @@ html
                 location.reload();
               });
             }
-            elseif (user) {
+            else {
               console.log('user.app_metadata is ', JSON.stringify(user.app_metadata));
               console.log('user.email is ', user.email);
               console.log('access token is ' + user.token.access_token);
