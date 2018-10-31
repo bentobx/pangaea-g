@@ -34,8 +34,6 @@ html
               console.log('user.email is ', user.email);
               console.log('access token is ' + user.token.access_token);
               user.jwt().then((jwt) => {
-                console.log('this would be a good time to save this cookie');
-                console.log(jwt);
                 document.cookie = 'nf_jwt=' + jwt + '; path=/';
                 });
             }
