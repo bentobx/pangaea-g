@@ -37,18 +37,26 @@ extends(src="../templates/_layout.sgr")
             window.netlifyIdentity.on("login", function () {
               document.location.href = location.protocol + '//' + location.host + location.pathname + location.hash;
               location.reload();
-              });
-            }
-            else {
-              console.log('user.app_metadata is ', JSON.stringify(user.app_metadata));
-              console.log('user.email is ', user.email);
-              console.log('access token is ' + user.token.access_token);
-              user.jwt().then((jwt) => {
-                console.log('this would be a good time to save this cookie');
-                console.log(jwt);
-                document.cookie = 'nf_jwt=' + jwt + '; path=/';
-              }
-              );
-            }
             });
           }
+          else if(user) {
+
+            var refresh = window.localStorage.getItem('refresh');
+            console.log(refresh);
+            if (refresh===null){
+              document.location.href = location.protocol + '//' + location.host + location.pathname + location.hash;
+              location.reload();
+              window.localStorage.setItem('refresh', "1");
+            }
+
+            console.log('user.app_metadata is ', JSON.stringify(user.app_metadata));
+            console.log('user.email is ', user.email);
+            console.log('access token is ' + user.token.access_token);
+
+            user.jwt().then((jwt) => {
+              console.log('set new expiry');
+              document.cookie = 'nf_jwt=' + jwt + '; path=/';
+            })
+          }
+          });
+        }
