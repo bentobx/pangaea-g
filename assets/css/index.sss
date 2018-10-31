@@ -339,3 +339,18 @@ h1
 
 a.callOut
   display: none !important
+
+
+table
+  border-collapse:collapse
+  border-spacing:0
+  width:100%
+  margin:4rem auto
+  @nest & thead
+    border-bottom:solid 2px #ccc
+  @nest & tr
+    border-bottom:solid 1px #ccc
+  @nest & tr.even
+    background:#FFF8F8
+  @nest & td
+    padding:0.5rem
