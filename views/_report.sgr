@@ -46,11 +46,12 @@ extends(src="../templates/_layout.sgr")
           console.log(user)
           compareDate(user.token.expires_at)
         });
-        // Redirect to the main page after a successful login
+        // Reload on successful login
         window.netlifyIdentity.on("init", user => {
           if (!user) {
             window.netlifyIdentity.on("login", () => {
-              console.log('logged-in')
+              document.location.href = location.protocol + '//' + location.host + location.pathname + location.hash;
+              location.reload();
             });
           }
         });
