@@ -18,24 +18,29 @@ html
 
 
     block(name="javascript")
-      script(src="/js/main.js" defer)
-      script.
-        if (window.netlifyIdentity) {
-          window.netlifyIdentity.on("init", function (user) {
-            if (!user) {
-              netlifyIdentity.open();
-              window.netlifyIdentity.on("login", function () {
-                document.location.href = location.protocol + '//' + location.host + location.pathname + location.hash;
-                location.reload();
-              });
-            }
-            else {
-              console.log('user.app_metadata is ', JSON.stringify(user.app_metadata));
-              console.log('user.email is ', user.email);
-              console.log('access token is ' + user.token.access_token);
-              user.jwt().then((jwt) => {
-                document.cookie = 'nf_jwt=' + jwt + '; path=/';
-                });
-            }
-          });
+    script.
+      const compareDate = (exp) => {
+        const d = Date.now()
+        if (d > exp) {
+          console.log("Your identity session has expired")
+          netlifyIdentity.logout();
+          netlifyIdentity.open();
+        } else {
+          console.log("the token hasn't expired, yet")
         }
+      }
+      if (window.netlifyIdentity) {
+        // Check if the JWT token is expired, if so log out the user
+        netlifyIdentity.on("login", user => {
+          console.log(user)
+          compareDate(user.token.expires_at)
+        });
+        // Redirect to the main page after a successful login
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              console.log('logged-in')
+            });
+          }
+        });
+      }
