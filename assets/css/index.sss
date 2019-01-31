@@ -109,7 +109,7 @@
       color: color(#1F4292 lightness(90%))
       font-size: 1.5rem
     @nest & .attribution
-      color: color(#1F4292 lightness(75%))
+      color: color(#1F4292 lightness(95%))
       font-size: 1.25rem
       text-align: right
 
@@ -216,7 +216,9 @@ h1
 
 .footer
   @nest & h4
-    color: var(--color-primary)
+    color: color(var(--color-primary) shade(60%))
+    font-weight: 900
+
     margin: 0
 
   @nest & .copyright
