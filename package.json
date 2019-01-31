@@ -15,7 +15,7 @@
     "markdown-it-container": "^2.0.0",
     "markdown-it-footnote": "^3.0.1",
     "markdown-it-sup": "^1.0.0",
-    "markdown-it-toc-and-anchor": "git+https://github.com/jennie/markdown-it-toc-and-anchor",
+    "markdown-it-toc-and-anchor": "git+https://github.com/jennie/markdown-it-toc-and-anchor.git",
     "reshape": "^0.4.2",
     "reshape-content": "^0.3.0",
     "reshape-expressions": "^0.1.5",
