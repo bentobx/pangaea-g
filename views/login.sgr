@@ -3,5 +3,5 @@ extends(src="../templates/_login-layout.sgr")
     title Login - Pangaea Consultants
 
   block(name="content")
-
+    div#primary-text
     div(data-netlify-identity-button)
