@@ -38,11 +38,9 @@ html
           });
           // Reload on successful login
           window.netlifyIdentity.on("init", user => {
-            if (!user) {
               window.netlifyIdentity.on("login", () => {
                 document.location.href = location.protocol + '//' + location.host + location.pathname + location.hash;
                 location.reload();
               });
-            }
           });
         }
