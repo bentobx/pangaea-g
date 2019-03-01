@@ -20,34 +20,27 @@ html
     block(name="javascript")
       script(src="/js/main.js" defer)
       script.
-        const updateLoginText = ()=>{
-            document.getElementById("primary-text").textContent="You are logged in!"
-        }
         const compareDate = (exp) => {
-            const d = Date.now()
-            if (d > exp){
-              console.log("Your identity session has expired")
-              netlifyIdentity.logout();
-              netlifyIdentity.open();
-            } else {
-              console.log("the token hasn't expired, yet")
-              updateLoginText()
-              document.location.href = location.protocol + '//' + location.host + location.pathname + location.hash;
-              location.reload();
-
-            }
+          const d = Date.now()
+          if (d > exp){
+            console.log("Your identity session has expired")
+            netlifyIdentity.logout();
+            netlifyIdentity.open();
+          }
+          else {
+            console.log("the token hasn't expired yet")
+            document.location.href = location.protocol + '//' + location.host + location.pathname + location.hash;
+            location.reload();
+          }
         }
         if (window.netlifyIdentity) {
-            netlifyIdentity.on("login", user => {
+          netlifyIdentity.on("login", user => {
             console.log(user)
             compareDate(user.token.expires_at)
-            });
-            window.netlifyIdentity.on("init", user => {
+          });
+          window.netlifyIdentity.on("init", user => {
             if (!user) {
-                window.netlifyIdentity.on("login", () => {
-                    updateLoginText()
-
-                });
-              }
-            });
+              netlifyIdentity.open();
+            }
+          }
         }
