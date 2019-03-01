@@ -21,7 +21,7 @@ html
       script(src="/js/main.js" defer)
       script.
         const updateLoginText = ()=>{
-            document.getElementById("primary-text").textContent="Looks like you've logged in successfully! Now try clicking the 'Test Auth' link at the top!"
+            document.getElementById("primary-text").textContent="You are logged in!"
         }
         const compareDate = (exp) => {
             const d = Date.now()
@@ -36,10 +36,10 @@ html
         }
         if (window.netlifyIdentity) {
             netlifyIdentity.on("login", user => {
+            console.log(user)
+            compareDate(user.token.expires_at)
             });
             window.netlifyIdentity.on("init", user => {
-              console.log(user)
-              compareDate(user.token.expires_at)
             if (!user) {
                 window.netlifyIdentity.on("login", () => {
                     updateLoginText()
