@@ -26,14 +26,14 @@ html
         const compareDate = (exp) => {
             const d = Date.now()
             if (d > exp){
-            console.log("Your identity session has expired")
-            netlifyIdentity.logout();
-            netlifyIdentity.open();
+              console.log("Your identity session has expired")
+              netlifyIdentity.logout();
+              netlifyIdentity.open();
             } else {
-            console.log("the token hasn't expired, yet")
-            updateLoginText()
-            document.location.href = location.protocol + '//' + location.host + location.pathname + location.hash;
-            location.reload();
+              console.log("the token hasn't expired, yet")
+              updateLoginText()
+              document.location.href = location.protocol + '//' + location.host + location.pathname + location.hash;
+              location.reload();
             }
         }
         if (window.netlifyIdentity) {
@@ -45,8 +45,7 @@ html
             if (!user) {
                 window.netlifyIdentity.on("login", () => {
                     updateLoginText()
-                    document.location.href = location.protocol + '//' + location.host + location.pathname + location.hash;
-                    location.reload();
+
                 });
               }
             });
