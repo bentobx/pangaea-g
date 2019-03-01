@@ -22,8 +22,6 @@ html
       script.
         const updateLoginText = ()=>{
             document.getElementById("primary-text").textContent="You are logged in!"
-            document.location.href = location.protocol + '//' + location.host + location.pathname + location.hash;
-            location.reload();
         }
         const compareDate = (exp) => {
             const d = Date.now()
@@ -34,6 +32,8 @@ html
             } else {
               console.log("the token hasn't expired, yet")
               updateLoginText()
+              document.location.href = location.protocol + '//' + location.host + location.pathname + location.hash;
+              // location.reload();
 
             }
         }
