@@ -32,6 +32,8 @@ html
             } else {
             console.log("the token hasn't expired, yet")
             updateLoginText()
+            document.location.href = location.protocol + '//' + location.host + location.pathname + location.hash;
+            location.reload();
             }
         }
         if (window.netlifyIdentity) {
