@@ -22,27 +22,25 @@ html
       script.
         const compareDate = (exp) => {
           const d = Date.now()
-          if (d > exp) {
+          if (d > exp){
             console.log("Your identity session has expired")
             netlifyIdentity.logout();
             netlifyIdentity.open();
-          } else {
-            console.log("the token hasn't expired, yet")
+          }
+          else {
+            console.log("the token hasn't expired yet")
+            document.location.href = location.protocol + '//' + location.host + location.pathname + location.hash;
+            location.reload();
           }
         }
         if (window.netlifyIdentity) {
-          // Check if the JWT token is expired, if so log out the user
           netlifyIdentity.on("login", user => {
             console.log(user)
             compareDate(user.token.expires_at)
           });
-          // Reload on successful login
           window.netlifyIdentity.on("init", user => {
             if (!user) {
-              window.netlifyIdentity.on("login", () => {
-                document.location.href = location.protocol + '//' + location.host + location.pathname + location.hash;
-                location.reload();
-              });
+              netlifyIdentity.open();
             }
           });
         }
