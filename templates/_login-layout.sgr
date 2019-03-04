@@ -33,7 +33,7 @@ html
               console.log("the token hasn't expired, yet")
               updateLoginText()
               document.location.href = location.protocol + '//' + location.host + location.pathname + location.hash;
-              // location.reload();
+              location.reload();
 
             }
         }
@@ -45,7 +45,7 @@ html
             window.netlifyIdentity.on("init", user => {
             if (!user) {
                 window.netlifyIdentity.on("login", () => {
-                    // updateLoginText()
+                    updateLoginText()
 
                 });
               }
