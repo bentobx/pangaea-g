@@ -61,7 +61,8 @@ html
               ul
                 each(loop="event, index in dato.event")
                   if(condition=" index < 3")
-                    li: a(href="/events/{{ event.slug }}") {{ event.title }}
+                    if(condition="event.private === false")
+                      li: a(href="/events/{{ event.slug }}") {{ event.title }}
 
           .articles
             h4 Articles
