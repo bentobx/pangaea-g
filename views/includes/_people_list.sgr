@@ -1,12 +1,13 @@
 .people-container
   each(loop="person in dato.person")
-    .card.person
-      figure.headshot: img(src="//{{ dato._meta.imgixHost + person.image.path }}?fit=crop&max-w=200&max-h=200")
-      if(condition="person.credentials")
-        h2
-          a(href="/profile/{{ person.slug }}") {{ person.name }},
-          small {{ person.credentials }}
-      else
-        h2: a(href="/profile/{{ person.slug }}") {{ person.name }}
+    if(condition="person.hidden === false")
+      .card.person
+        figure.headshot: img(src="//{{ dato._meta.imgixHost + person.image.path }}?auto=compress&fit=crop&max-w=200&max-h=200&mask=ellipse")
+        if(condition="person.credentials")
+          h2
+            a(href="/profile/{{ person.slug }}") {{ person.name }},
+            small {{ person.credentials }}
+        else
+          h2: a(href="/profile/{{ person.slug }}") {{ person.name }}
 
-      p {{ person.title }}
+        p {{ person.title }}
